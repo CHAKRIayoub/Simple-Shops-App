@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 
 
-Route::group(['middleware'=>'api', 'prefix'=>'auth'], function($router){
+Route::group(['middleware'=>'api'], function($router){
 
 	Route::post('login', 'AuthController@login');
 	Route::post('logout', 'AuthController@logout');

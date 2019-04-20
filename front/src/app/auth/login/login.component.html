@@ -1,5 +1,12 @@
 <div nz-row nzType="flex" nzJustify="space-around" nzAlign="middle" class="align-middle" class="login-container">
+   
     <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item *ngIf="loginFail">
+        <nz-form-control>
+          <nz-alert nzCloseable nzType="error" nzMessage="Please check your email or password" nzShowIcon></nz-alert>
+        </nz-form-control>
+      </nz-form-item>
+
       <nz-form-item>
         <nz-form-control>
           <nz-input-group [nzPrefix]="prefixUser">
