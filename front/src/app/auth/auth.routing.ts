@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router'
 import { ModuleWithProviders } from '@angular/core'
 
 const routes: Routes = [
-  { path: '', component: LoginComponent }, 
+  { path: '', pathMatch: 'full', redirectTo: 'login' }, 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ]

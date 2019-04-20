@@ -12,10 +12,6 @@ export class LoginComponent implements OnInit {
   email: String;
   password: String;
   
-  submitForm(): void {
-    
-  }
-
   constructor() {}
 
   ngOnInit(): void {
@@ -25,6 +21,10 @@ export class LoginComponent implements OnInit {
       'password': new FormControl(this.password, [Validators.required]),
     });
   
+  }
+
+  submitForm(): void {
+    
   }
 
 }

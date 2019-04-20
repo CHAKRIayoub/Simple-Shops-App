@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'app' },
     {
-      path: 'login',
+      path: 'auth',
       loadChildren: './auth/auth.module#AuthModule',
     },
     {

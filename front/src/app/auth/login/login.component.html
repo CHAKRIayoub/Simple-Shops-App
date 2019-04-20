@@ -6,7 +6,7 @@
             <input type="text" nz-input formControlName="email" placeholder="Email" />
           </nz-input-group>
           <nz-form-explain *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.errors"
-            >Please input your email!</nz-form-explain
+            >Please check your email!</nz-form-explain
           >
         </nz-form-control>
       </nz-form-item>
@@ -22,13 +22,14 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-control>
-          <!-- <label nz-checkbox formControlName="remember">
+          <!-- <label >
             <span>Remember me</span>
           </label>
           <a class="login-form-forgot" class="login-form-forgot">Forgot password</a> -->
-          <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
-          Or
-          <a href="">register now!</a>
+          <button  nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+          <span>
+            Or    <a href="">register</a>
+          </span>
         </nz-form-control>
       </nz-form-item>
     </form>
