@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-
 import { routing } from './layout.routing';
 
 @NgModule({
 
-  imports: [
+  imports: [ 
     CommonModule, 
     routing,
-    NgZorroAntdModule,
-
+    FormsModule,
+    ReactiveFormsModule,
+    NgZorroAntdModule
   ],
   
   declarations: [
@@ -23,11 +24,6 @@ import { routing } from './layout.routing';
     HeaderComponent,
     FooterComponent,
   ],
-
-  exports : [
-    NgZorroAntdModule,
-
-  ]
 
 })
 export class LayoutModule { }
