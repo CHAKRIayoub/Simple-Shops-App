@@ -1,0 +1,39 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .trigger:hover {
+    color: #1890ff;
+  }
+
+  .logo {
+    height: 32px;
+    margin-bottom: 70px;
+    color: #fff;
+  }
+
+  nz-header a{
+      
+    float: right;
+    padding-right: 20px;
+
+  }
+
+  .general-layout{
+    height: 100%;
+  }
+
+  .general-header{
+    background: #fff;
+    padding:0;
+  }
+
+  .general-content{
+    padding:24px; 
+    background: #fff; 
+    min-height: 100%;
+  }

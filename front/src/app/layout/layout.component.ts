@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
-  isCollapsed = false;
-  triggerTemplate: TemplateRef<void> | null = null;
-  @ViewChild('trigger') customTrigger: TemplateRef<void>;
+ 
   logged:boolean;
 
   constructor(    
@@ -29,15 +27,8 @@ export class LayoutComponent implements OnInit {
     
   }
 
-  /** custom trigger can be TemplateRef **/
-  changeTrigger(): void {
-    this.triggerTemplate = this.customTrigger;
-  }
 
-  logout(){
-    this.auth_service.changeAuthStatus(false)
-    this.token_service.removeToken()
-    this.router.navigateByUrl('/auth/login'); 
-  }
+
+  
 
 }

@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   submitForm(): void {
     this.auth_service.signup(this.registerForm.value).subscribe(
         (data)=>{
-          console.log(data)
+          this.login(data)
         },
         (error)=>{
           console.log(error)

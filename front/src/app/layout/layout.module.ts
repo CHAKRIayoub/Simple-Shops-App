@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout.component';
 
-import { routing } from './layout.routing';
+import { routing } from './pages.routing';
 
 @NgModule({
 

@@ -1,49 +1,17 @@
-<nz-layout class="general-layout"  >
-    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
-      <div class="logo"> <img src="./assets/boutique-64.png"> <span *ngIf="!isCollapsed">  Simple Shops </span> </div>
-      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-        <li nz-submenu>
-          <span title><i nz-icon type="user"></i><span class="nav-text">User</span></span>
-          <ul>
-            <li nz-menu-item>Tom</li>
-            <li nz-menu-item>Bill</li>
-            <li nz-menu-item>Alex</li>
-          </ul>
-        </li>
-        <li nz-submenu>
-          <span title><i nz-icon type="team"></i><span class="nav-text">Team</span></span>
-          <ul>
-            <li nz-menu-item>Team 1</li>
-            <li nz-menu-item>Team 2</li>
-          </ul>
-        </li>
-        <li nz-menu-item>
-          <span><i nz-icon type="file"></i><span class="nav-text">File</span></span>
-        </li>
-      </ul>
-    </nz-sider>
-    <nz-layout>
-      <nz-header class="general-header">
-        <i
-          class="trigger"
-          nz-icon
-          [type]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          (click)="isCollapsed = !isCollapsed"
-        ></i>
-        <a (click)="logout()" > Logout </a>
-      </nz-header>
-      <nz-content style="margin:0 16px;">
-        <nz-breadcrumb style="margin:16px 0;">
-          <nz-breadcrumb-item>User</nz-breadcrumb-item>
-          <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-        </nz-breadcrumb>
-        <div class="general-content">
-          Bill is a cat.
-        </div>
-      </nz-content>
-      <nz-footer style="text-align: center;">Made with Love by Ayoub Chakri</nz-footer>
-    </nz-layout>
-  </nz-layout>
-  <ng-template #trigger>
-    <i nz-icon type="up"></i>
-  </ng-template>
+<nz-layout class="layout">
+  <app-header></app-header>
+
+  <router-outlet></router-outlet>
+
+  <nz-content style="padding:0 50px;margin-top:64px;">
+    <nz-breadcrumb style="margin:16px 0;">
+      <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+      <nz-breadcrumb-item>List</nz-breadcrumb-item>
+      <nz-breadcrumb-item>App</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div style="background:#fff; padding: 24px; min-height: 380px;">Content</div>
+  </nz-content>
+  
+  <app-footer></app-footer>
+ 
+</nz-layout>
