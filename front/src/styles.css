@@ -15,3 +15,23 @@
     padding:0 50px;
     margin-top:64px;
 }
+
+.nz-header{
+    position:fixed; 
+    width:100%;   
+    z-index: 9;
+    box-shadow: 0px 0px 10px 0px #666;
+}
+
+.nz-menu{
+    line-height: 64px;
+}
+
+.nz-card{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin-top: 10px;
+}
+
+.ant-card-body{
+    padding: 10px;
+}

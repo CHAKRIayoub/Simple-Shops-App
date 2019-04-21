@@ -8,7 +8,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 const routes: Routes = [
   {
       path: "",
-      component: ShopComponent,
+      component: ListShopsComponent,
   },
 
 ];

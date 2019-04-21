@@ -1,3 +1,14 @@
-<p>
-  list-shops works!
-</p>
+<nz-content class="nz-content">
+    <nz-breadcrumb class="nz-breadcrumb" >
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Shops</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <div class="page-content">
+      <h2>Shops List</h2><hr>
+      <div class="row" >
+        <div *ngFor="let shop of shops" class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <app-shop [shop]="shop" ></app-shop>
+        </div>
+      </div>
+    </div>
+  </nz-content>
