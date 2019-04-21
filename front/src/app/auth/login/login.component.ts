@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
+    private router:Router,
+
   ){}
 
   ngOnInit(): void {
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit {
       'password': new FormControl(this.password, [Validators.required]),
     });
   
-  }
+  } 
 
   submitForm(): void {
 
@@ -42,7 +45,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(data){
-    this.token_service.setToken(data.access_token)
+    this.auth_service.changeAuthStatus(true)
+    this.token_service.setToken(data.access_token);
+    this.router.navigateByUrl('/app'); 
   }
 
 }

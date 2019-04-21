@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GuardService } from './auth/services/guard.service'
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'app' },
@@ -10,6 +11,7 @@ const routes: Routes = [
     {
       path: 'app',
       loadChildren: './layout/layout.module#LayoutModule',
+      canActivate: [GuardService]
     },
 
 ];
