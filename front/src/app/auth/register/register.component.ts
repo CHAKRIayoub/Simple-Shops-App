@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +13,9 @@ export class RegisterComponent implements OnInit {
   name:string;
   email: String;
   password: String;
-  password2: String;
+  password_confirmation: String;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
 
@@ -22,13 +23,20 @@ export class RegisterComponent implements OnInit {
       'name': new FormControl(this.name, [Validators.required]),
       'email': new FormControl(this.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.password, [Validators.required]),
-      'password2': new FormControl(this.password, [Validators.required]),
+      'password_confirmation': new FormControl(this.password, [Validators.required]),
     });
   
   }
 
   submitForm(): void {
-    
+    this.http.post('http://localhost:8000/api/signup', this.registerForm.value).subscribe(
+        (data)=>{
+          console.log(data)
+        },
+        (error)=>{
+          console.log(error)
+        }
+      );
   }
 
 }

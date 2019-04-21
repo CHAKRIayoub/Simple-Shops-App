@@ -33,9 +33,9 @@
       <nz-form-item>
         <nz-form-control>
           <nz-input-group [nzPrefix]="prefixLock">
-            <input type="password" nz-input formControlName="password2" placeholder="Repeat your Password" />
+            <input type="password" nz-input formControlName="password_confirmation" placeholder="Repeat your Password" />
           </nz-input-group>
-          <nz-form-explain *ngIf="registerForm.get('password2')?.dirty && registerForm.get('password2')?.errors"
+          <nz-form-explain *ngIf="registerForm.get('password_confirmation')?.dirty && registerForm.get('password_confirmation')?.errors"
             >Please input the same Password!</nz-form-explain>
         </nz-form-control>
       </nz-form-item>
