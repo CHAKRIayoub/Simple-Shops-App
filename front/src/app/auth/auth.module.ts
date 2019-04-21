@@ -5,8 +5,9 @@ import { RegisterComponent } from './register/register.component';
 import { routing } from './auth.routing';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './services/auth.service'
 
+import { AuthService } from './services/auth.service'
+import { TokenService } from './services/token.service'
 
 @NgModule({
 
@@ -24,7 +25,8 @@ import { AuthService } from './services/auth.service'
   ],
 
   providers:[
-    AuthService
+    AuthService,
+    TokenService
   ]
 
 })

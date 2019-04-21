@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+
 import { AuthService } from '../services/auth.service';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,10 @@ export class LoginComponent implements OnInit {
   password: String;
   loginFail: boolean = false;
   
-  constructor(private auth_service:AuthService) {}
+  constructor(
+    private auth_service:AuthService,
+    private token_service:TokenService,
+  ){}
 
   ngOnInit(): void {
 
@@ -28,12 +33,16 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
 
       this.auth_service.login(this.loginForm.value).subscribe(
-        (data)=>{console.log(data)},
+        (data) => this.login(data),
         (error)=>{
           this.loginFail = true;
         }
       );
 
+  }
+
+  login(data){
+    this.token_service.setToken(data.access_token)
   }
 
 }
