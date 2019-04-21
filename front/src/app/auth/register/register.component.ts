@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,9 +15,9 @@ export class RegisterComponent implements OnInit {
   password: String;
   password_confirmation: String;
 
-  constructor(private http: HttpClient) {}
+  constructor(private auth_service:AuthService) {}
 
-  ngOnInit(): void {
+  ngOnInit() : void {
 
     this.registerForm = new FormGroup({
       'name': new FormControl(this.name, [Validators.required]),
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm(): void {
-    this.http.post('http://localhost:8000/api/signup', this.registerForm.value).subscribe(
+    this.auth_service.signup(this.registerForm.value).subscribe(
         (data)=>{
           console.log(data)
         },

@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { routing } from './auth.routing';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service'
 
 
 @NgModule({
@@ -21,6 +22,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent, 
     RegisterComponent
   ],
+
+  providers:[
+    AuthService
+  ]
 
 })
 export class AuthModule { }
