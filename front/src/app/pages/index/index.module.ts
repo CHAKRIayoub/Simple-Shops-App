@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListShopsComponent } from './shops.component';
-import { ShopComponent } from './shop/shop.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { IndexComponent } from './index.component';
+
 
 const routes: Routes = [
   {
       path: "",
-      component: ShopComponent,
+      component: IndexComponent,
   },
-
 ];
 
 @NgModule({
-  declarations: [ListShopsComponent, ShopComponent],
+  declarations: [IndexComponent],
   imports: [
     CommonModule,
     NgZorroAntdModule,
@@ -22,4 +21,4 @@ const routes: Routes = [
   ]
 })
 
-export class ShopsModule { }
+export class IndexModule { }

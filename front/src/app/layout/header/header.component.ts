@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  logged:boolean;
+
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
@@ -17,6 +19,11 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.auth_service.authStatut.subscribe(
+      (data)=>{ this.logged = data }
+    );
+
   }
 
   logout(){

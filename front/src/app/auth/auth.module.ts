@@ -14,8 +14,8 @@ import { IsNotLoggedService } from './services/is-not-logged.service';
 
 @NgModule({
 
-  imports: [
-    CommonModule, 
+  imports: [ 
+    CommonModule,  
     routing,
     NgZorroAntdModule,
     FormsModule,

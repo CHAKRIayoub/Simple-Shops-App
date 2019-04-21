@@ -5,7 +5,7 @@ import { IsNotLoggedService } from './auth/services/is-not-logged.service'
 
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'app' },
+    { path: '', pathMatch: 'full', redirectTo: 'index' },
     
     {
       path: 'auth',
@@ -14,10 +14,16 @@ const routes: Routes = [
     }, 
 
     {
-      path: 'app',
-      loadChildren: './layout/layout.module#LayoutModule',
+      path: 'shops',
+      loadChildren: './pages/shops/shops.module#ShopsModule',
       canActivate: [IsLoggedService]
 
+    },
+
+    {
+      path: 'index',
+      loadChildren: './pages/index/index.module#IndexModule',
+      canActivate: [IsLoggedService]
     },
 
 ];
