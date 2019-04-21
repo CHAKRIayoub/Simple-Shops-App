@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { TokenService } from '../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,11 @@ export class RegisterComponent implements OnInit {
   password: String;
   password_confirmation: String;
 
-  constructor(private auth_service:AuthService) {}
+  constructor(
+    private auth_service:AuthService,
+    private token_service:TokenService,
+    private router:Router
+  ) {}
 
   ngOnInit() : void {
 
@@ -39,4 +45,10 @@ export class RegisterComponent implements OnInit {
       );
   }
 
-}
+  login(data){
+    this.auth_service.changeAuthStatus(true)
+    this.token_service.setToken(data.access_token);
+    this.router.navigateByUrl('/app'); 
+  }
+
+} 

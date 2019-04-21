@@ -8,9 +8,9 @@ import { environment } from 'src/environments/environment';
 
 export class TokenService {
 
-    private iss = {
-        login: environment.api + "/api/login",
-        signup: environment.api  + "/api/signup"
+    private links = {
+        login: environment.api + "/login",
+        signup: environment.api  + "/signup"
     };
 
 
@@ -36,11 +36,10 @@ export class TokenService {
         if (token) {
             const payload = this.payload(token);
             if (payload) {
-                return Object.values(this.iss).indexOf(payload.iss) > -1;
+                return this.links.login == payload.iss || this.links.signup == payload.iss; 
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     payload(token) {
