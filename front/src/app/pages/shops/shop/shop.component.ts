@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Shop } from 'src/app/models/shop';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shop',
@@ -7,14 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
+  @Input() shop: Shop;
+  images_link:string = environment.images_link+"/shops/"
 
   constructor() {
-   
   }
 
   ngOnInit() {
-
-    
 
   }
 

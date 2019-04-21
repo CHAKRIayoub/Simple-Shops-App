@@ -1,6 +1,21 @@
-  <nz-card nzHoverable class="nz-card" nzTitle="Card title" [nzExtra]="extraTemplate">
-    <div class="row">
-      <div class="col-lg-6 col-xs-12 p-0 m-0 bg-sucess" >image</div>
-      <div class="col-lg-6 col-xs-12 bg-primary"  >data</div>
+<nz-card nzHoverable [nzCover]="coverTemplate" [nzActions]="[like, dislike]">
+    <nz-card-meta [nzTitle]="titleTemplate" [nzDescription]="shop.description"></nz-card-meta>
+</nz-card>
+
+<ng-template #titleTemplate>
+    <div class="ant-card-meta-title" > {{ shop.name }} 
+        <span class="float-right" > {{ shop.distance }}m </span>
     </div>
-  </nz-card>
+</ng-template>
+
+<ng-template #coverTemplate>
+    <img [alt]="shop.image" [src]="images_link+shop.image" />
+</ng-template>
+
+<ng-template #like>
+    <i nz-icon nzType="like" nzTheme="outline"></i>
+</ng-template>
+
+<ng-template #dislike>
+    <i nz-icon nzType="dislike" nzTheme="outline"></i>
+</ng-template>
