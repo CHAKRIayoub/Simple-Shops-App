@@ -11,6 +11,7 @@ export class ListShopsComponent implements OnInit {
 
   
   shops:Shop[];
+  ViewList = 'nearby';
 
   constructor(private shops_service:ShopsService) {
     this.initShops()
@@ -30,6 +31,10 @@ export class ListShopsComponent implements OnInit {
         console.log(error)
       }
     );
+  }
+
+  switchList(str){
+
   }
 
 }
