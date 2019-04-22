@@ -12,7 +12,10 @@ Route::group(['middleware'=>'api'], function($router){
 	Route::post('refresh', 'AuthController@refresh');
 	Route::post('me', 'AuthController@me');
 
-	Route::resource('shops','ShopController');
+	Route::get('shops','ShopController@shops');
+	Route::post('shops/{id}/like','ShopController@like');
+	Route::post('shops/{id}/dislike','ShopController@dislike');
+
 	
 
 });

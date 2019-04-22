@@ -8,7 +8,7 @@ use App\Shop;
 class ShopController extends Controller
 {
     
-    public function index(Request $request)
+    public function shops(Request $request)
     {
 
     	$list = Shop::get();
@@ -28,6 +28,21 @@ class ShopController extends Controller
     	}
 
         return $shops;
+    }
+
+
+
+    public function like(Request $request)
+    {
+
+
+    }
+
+
+    public function dislike(Request $request)
+    {
+
+
     }
 
 

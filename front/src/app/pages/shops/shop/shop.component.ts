@@ -23,7 +23,15 @@ export class ShopComponent implements OnInit {
 
   likeShop(){
 
-    this.shop.liked=true;
+    this.shop.liked=!this.shop.liked;
+    if(this.shop.liked) {
+      this.message.success('Saved to Prefered List');
+      this.shops_service.like(this.shop.id).subscribe(
+        ()=>{},
+        ()=>{},
+      );
+    }
+
 
   }
 
