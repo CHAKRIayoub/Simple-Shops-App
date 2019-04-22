@@ -13,8 +13,8 @@ Route::group(['middleware'=>'api'], function($router){
 	Route::post('me', 'AuthController@me');
 
 	Route::get('shops','ShopController@shops');
-	Route::post('shops/{id}/like','ShopController@like');
-	Route::post('shops/{id}/dislike','ShopController@dislike');
+	Route::post('shops/like','ShopController@like');
+	Route::post('shops/dislike','ShopController@dislike');
 
 	
 

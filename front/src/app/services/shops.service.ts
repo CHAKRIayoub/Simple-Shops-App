@@ -9,16 +9,21 @@ import { environment } from "./../../environments/environment";
 export class ShopsService {
 
   url:string = environment.api + '/shops';
-  userId = '?userId='+JSON.parse(localStorage.getItem('user')).id;
+  userId = JSON.parse(localStorage.getItem('user')).id;
 
   constructor(private http: HttpClient) { }
 
   getShops() {
-    return this.http.get(this.url+this.userId);
+    return this.http.get(this.url+'?userId='+this.userId);
   }
 
-  like() {
-    return this.http.post(this.url,{});
+  like(id, liked) {
+    let data = {
+      shop_id : id,
+      user_id : this.userId
+    }
+    let likeOrDislike = (liked)?'/like':'/dislike';
+    return this.http.post(this.url+likeOrDislike,data);
   }
   
 }

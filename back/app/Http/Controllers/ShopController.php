@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Shop;
-
+use App\Like;
 class ShopController extends Controller
 {
     
@@ -34,15 +34,17 @@ class ShopController extends Controller
 
     public function like(Request $request)
     {
-
-
+    	$like = new Like();
+    	$like->user_id = $request->user_id;
+    	$like->shop_id = $request->shop_id;
+    	$like->save();
     }
 
 
     public function dislike(Request $request)
     {
-
-
+    	$like = Like::where('user_id',$request->user_id)->where('shop_id', $request->shop_id)->first();
+    	$like->delete();
     }
 
 
