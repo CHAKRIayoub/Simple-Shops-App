@@ -27,7 +27,7 @@ class ShopController extends Controller
     		array_push($shops, $obj);
     	}
 
-        return $shops;
+        return response()->json($shops, 200);
     }
 
 
@@ -38,6 +38,9 @@ class ShopController extends Controller
     	$like->user_id = $request->user_id;
     	$like->shop_id = $request->shop_id;
     	$like->save();
+    	
+    	return response()->json(null, 200);
+
     }
 
 
@@ -45,6 +48,9 @@ class ShopController extends Controller
     {
     	$like = Like::where('user_id',$request->user_id)->where('shop_id', $request->shop_id)->first();
     	$like->delete();
+
+    	return response()->json(null, 200);
+
     }
 
 

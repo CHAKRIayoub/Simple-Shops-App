@@ -19,17 +19,18 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
-
+   
   }
 
-  likeShop(){
+  likeShop(){ 
 
     this.shop.liked=!this.shop.liked;
     this.shops_service.like(this.shop.id, this.shop.liked).subscribe(
       ()=>{
-        this.message.success( (this.shop.liked) ?'Saved to': 'removed from' + 'your Preferred List');
+        // this.message.success( (this.shop.liked) ?'Saved to': 'removed from' + 'your Preferred List');
         this.shops_service.refreshList();
         console.log('shop');
+
       },
       ()=>{},
     );
