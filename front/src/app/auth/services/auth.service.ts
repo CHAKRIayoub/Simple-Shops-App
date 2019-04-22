@@ -4,8 +4,6 @@ import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { TokenService } from '../services/token.service';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,16 +18,25 @@ export class AuthService {
     private token_service:TokenService,
    ) { }
 
-  login(data){
+  
+   login(data){
+
     return this.http.post(environment.api+'/login', data)
+  
   }
+
 
   signup(data){
+  
     return this.http.post(environment.api+'/signup', data)
+  
   }
 
+  
   changeAuthStatus(value:boolean){
+  
     this.loggedIn.next(value);
+  
   }
 
 }

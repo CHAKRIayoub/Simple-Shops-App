@@ -9,28 +9,40 @@ import { Subject } from 'rxjs';
 export class ShopsService {
 
   url:string = environment.api + '/shops';
+
+  // observable to listen to like & dislike events
   private refreshListSubject = new Subject();
   refreshListObservable = this.refreshListSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
+  
   getShops() {
+
     let userId = JSON.parse(localStorage.getItem('user')).id;
     return this.http.get(this.url+'?userId='+userId);
+  
   }
 
+
+  //id      => shop id
+  //liked   => like or dislike operation
   like(id, liked) {
+
     let data = {
       shop_id : id,
       user_id : JSON.parse(localStorage.getItem('user')).id
     }
     let likeOrDislike = (liked)?'/like':'/dislike';
     return this.http.post(this.url+likeOrDislike,data);
+
   }
 
+  
   refreshList() {
+  
     this.refreshListSubject.next(); 
-    console.log('service');
+  
   }
   
 }

@@ -13,9 +13,8 @@
 </ng-template>
 
 <ng-template  #like>
-        <div (click)="likeShop()" class="action-wrapper">
-                <i  style="color:#4684ee"  nz-icon nzType="like" [nzTheme]="(shop.liked)?'fill':'outline'"></i>
-        </div>
-
+    <div (click)="likeOrDislikeShop()" class="action-wrapper">
+        <i  style="color:#4684ee"  nz-icon nzType="like" [nzTheme]="(shop.liked)?'fill':'outline'"></i>
+    </div>
 </ng-template>
 

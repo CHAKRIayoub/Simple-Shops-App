@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
 import { Router } from '@angular/router';
@@ -10,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
   loginFail: boolean = false;
   loading:boolean=false;
 
-  
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
     private router:Router,
   ){}
 
+  
   ngOnInit(): void {
 
     this.loginForm = new FormGroup({
@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
   
   } 
 
+
   submitForm(): void {
+
       this.loading = true;
       this.auth_service.login(this.loginForm.value).subscribe(
         (data:any) => {

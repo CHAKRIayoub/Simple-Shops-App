@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
@@ -16,18 +17,16 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
   password_confirmation: String;
-
   registerFail: boolean = false;
   failMessage: string = 'error';
-
   loading:boolean=false;
-
 
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
     private router:Router
   ) {}
+
 
   ngOnInit() : void {
 
@@ -40,7 +39,9 @@ export class RegisterComponent implements OnInit {
   
   }
 
+
   submitForm(): void {
+
     this.loading = true;
     this.auth_service.signup(this.registerForm.value).subscribe(
         (data:any)=>{
@@ -55,6 +56,7 @@ export class RegisterComponent implements OnInit {
           this.failMessage = error.error.message;
         }
       );
+
   }
 
 } 

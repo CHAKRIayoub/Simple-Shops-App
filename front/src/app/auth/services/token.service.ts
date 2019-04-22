@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +13,11 @@ export class TokenService {
     };
 
 
-    constructor(
-        // private http: HttpClient
-    ){ }
+    constructor(){ }
+
 
     setToken(data){
+
         localStorage.setItem('token', data.access_token);
         localStorage.setItem('user', JSON.stringify(data.user));
 
@@ -26,16 +25,22 @@ export class TokenService {
 
 
     getToken() {
+
         return localStorage.getItem('token');
+    
     }
 
 
     removeToken() {
+    
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+    
     }
 
+
     isTokenValid() {
+    
         const token = this.getToken();
         if (token) {
             const payload = this.payload(token);
@@ -44,19 +49,31 @@ export class TokenService {
             }
         }
         return false;
+    
     }
 
+    // parse the stored token to a readean object
     payload(token) {
+
         const payload = token.split('.')[1];
         return this.decode(payload);
+
     }
+
 
     decode(payload) {
+    
         return JSON.parse(atob(payload));
+    
     }
 
+
+    // check if someone is logged in
     loggedIn() {
+    
         return this.isTokenValid();
+    
     }
+
 
 }

@@ -8,6 +8,7 @@ use App\Like;
 class ShopController extends Controller
 {
     
+    // get list of shops with attribute liked (  )
     public function shops(Request $request)
     {
 
@@ -31,7 +32,7 @@ class ShopController extends Controller
     }
 
 
-
+    // liking a shop
     public function like(Request $request)
     {
     	$like = new Like();
@@ -44,6 +45,7 @@ class ShopController extends Controller
     }
 
 
+    // disliking a shop
     public function dislike(Request $request)
     {
     	$like = Like::where('user_id',$request->user_id)->where('shop_id', $request->shop_id)->first();
@@ -54,8 +56,8 @@ class ShopController extends Controller
     }
 
 
-
-    public function getLikedShops($id){
+    // get liked shops bu th user with id equal $id
+    private function getLikedShops($id){
     	return Shop::leftJoin('likes', 'shops.id','=', 'likes.shop_id')
 		        	->where('likes.user_id', $id)
 		        	->select('shops.*')

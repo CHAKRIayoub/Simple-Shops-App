@@ -18,15 +18,14 @@ export class HeaderComponent implements OnInit {
     private token_service:TokenService,
     private router:Router,
   ) { 
-
     this.logged = this.token_service.loggedIn();
     if(this.logged) this.userName = JSON.parse(localStorage.getItem('user')).name;
   }
 
+  
   ngOnInit() {
-
     
-
+    // listen for login or logout events
     this.auth_service.authStatut.subscribe(
       (data)=>{ 
         this.logged = data;  
@@ -36,11 +35,14 @@ export class HeaderComponent implements OnInit {
 
   }
 
+
   logout(){
+  
     this.auth_service.changeAuthStatus(false)
     this.token_service.removeToken()
     this.userName = ''
     this.router.navigateByUrl('/auth/login'); 
+  
   }
 
 }

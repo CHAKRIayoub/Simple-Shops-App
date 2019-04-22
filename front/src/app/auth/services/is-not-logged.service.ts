@@ -12,11 +12,7 @@ export class IsNotLoggedService  implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
 
-    console.log(this.token_service.loggedIn());
-    if(this.token_service.loggedIn()==true) {
-      this.router.navigate(['/index']);
-
-    }
+    if(this.token_service.loggedIn()==true) this.router.navigate(['/index']);
 
     return !this.token_service.loggedIn();
   }
