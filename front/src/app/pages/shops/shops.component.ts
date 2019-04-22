@@ -13,6 +13,8 @@ export class ListShopsComponent implements OnInit {
   Filtredshops:Shop[];
 
   constructor(private shops_service:ShopsService) {
+    this.shops=[];
+    this.Filtredshops=[];
     this.initShops()
   }
 
