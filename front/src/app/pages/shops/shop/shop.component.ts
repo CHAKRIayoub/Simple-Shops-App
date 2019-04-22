@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Shop } from 'src/app/models/shop';
 import { environment } from 'src/environments/environment';
 import { ShopsService } from 'src/app/services/shops.service';
@@ -12,6 +12,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class ShopComponent implements OnInit {
 
   @Input() shop: Shop;
+  @Output() refreshListEvent = new EventEmitter<number>();
   images_link:string = environment.images_link+"/shops/";
 
   constructor(private shops_service:ShopsService, private message: NzMessageService) {
@@ -27,6 +28,8 @@ export class ShopComponent implements OnInit {
     this.shops_service.like(this.shop.id, this.shop.liked).subscribe(
       ()=>{
         this.message.success( (this.shop.liked) ?'Saved to': 'removed from' + 'your Preferred List');
+        this.shops_service.refreshList();
+        console.log('shop');
       },
       ()=>{},
     );

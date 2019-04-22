@@ -11,11 +11,17 @@ export class ListShopsComponent implements OnInit {
 
   shops:Shop[];
   Filtredshops:Shop[];
+  FiltreBy:string;
 
   constructor(private shops_service:ShopsService) {
     this.shops=[];
     this.Filtredshops=[];
-    this.initShops()
+    this.initShops();
+
+    shops_service.refreshListObservable.subscribe( () => {
+        this.refreshList();
+        console.log('subscribed cible');
+    });
   }
 
   ngOnInit() {
@@ -29,7 +35,6 @@ export class ListShopsComponent implements OnInit {
         this.shops = shops;
         shops.sort(this.compareShopesByDistance );
         this.switchList('nearby')
-
       },
       
       (error)=>{
@@ -39,11 +44,10 @@ export class ListShopsComponent implements OnInit {
   }
 
   switchList(str){
-    {
+      this.FiltreBy = str;
       this.Filtredshops = this.shops.filter((shop)=>{ 
         return ((str=='nearby')) ? !shop.liked : shop.liked  ;
-       })
-    }
+      })
   }
 
   compareShopesByDistance(a:Shop, b:Shop):number{
@@ -54,6 +58,16 @@ export class ListShopsComponent implements OnInit {
       return 1;
     }
     return 0;
+  }
+
+  refreshList(){
+    // this.shops.forEach((shop,index) => {
+    //   if(shop.id==e){
+    //     this.shops[index].liked = !this.shops[index].liked;
+    //   }
+    // });
+    this.switchList(this.FiltreBy);
+    console.log(' =======> ');
   }
 
 }
