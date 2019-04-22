@@ -19,17 +19,19 @@ export class HeaderComponent implements OnInit {
     private router:Router,
   ) { 
 
-    this.logged = this.token_service.loggedIn()
-    if(this.logged)
-      this.userName = JSON.parse(localStorage.getItem('user')).name;
-    
-  
+    this.logged = this.token_service.loggedIn();
+    if(this.logged) this.userName = JSON.parse(localStorage.getItem('user')).name;
   }
 
   ngOnInit() {
 
+    
+
     this.auth_service.authStatut.subscribe(
-      (data)=>{ this.logged = data;  }
+      (data)=>{ 
+        this.logged = data;  
+        if(this.logged) this.userName = JSON.parse(localStorage.getItem('user')).name;
+      }
     );
 
   }
@@ -37,6 +39,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.auth_service.changeAuthStatus(false)
     this.token_service.removeToken()
+    this.userName = ''
     this.router.navigateByUrl('/auth/login'); 
   }
 

@@ -32,6 +32,11 @@
     margin-top: 10px;
 }
 
+.ant-layout{
+    min-height: 100%;
+}
+
+
 /* .ant-card-body{
     padding: 10px;
 } */

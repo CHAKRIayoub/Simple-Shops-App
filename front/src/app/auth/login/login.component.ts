@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   email: String;
   password: String;
   loginFail: boolean = false;
+  loading:boolean=false;
+
   
   constructor(
     private auth_service:AuthService,
@@ -33,15 +35,18 @@ export class LoginComponent implements OnInit {
   } 
 
   submitForm(): void {
-
+      this.loading = true;
       this.auth_service.login(this.loginForm.value).subscribe(
         (data:any) => {
-          this.auth_service.changeAuthStatus(true)
           this.token_service.setToken(data);
+          this.auth_service.changeAuthStatus(true)
           this.router.navigateByUrl('/index'); 
+          this.loading = false;
+
         },
         (error)=>{
           this.loginFail = true;
+          this.loading = false;
         }
       );
 

@@ -1,13 +1,17 @@
 <div nz-row nzType="flex" nzJustify="space-around" nzAlign="middle" class="align-middle" class="login-container">
     <form nz-form [formGroup]="registerForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item *ngIf="registerFail">
+            <nz-form-control>
+              <nz-alert nzCloseable nzType="error" [nzMessage]="failMessage" nzShowIcon></nz-alert>
+            </nz-form-control>
+          </nz-form-item>
       <nz-form-item>
           <nz-form-control>
             <nz-input-group [nzPrefix]="prefixUser">
               <input type="text" nz-input formControlName="name" placeholder="Complete Name" />
             </nz-input-group>
-            <nz-form-explain *ngIf="registerForm.get('name')?.dirty && registerForm.get('name')?.errors"
-              >required Input!</nz-form-explain
-            >
+            <nz-form-explain *ngIf=" registerForm.controls['name'].invalid && ( registerForm.controls['name'].dirty ||  registerForm.controls['name'].touched)" style="color:red"
+              >required Input!</nz-form-explain>
           </nz-form-control>
         </nz-form-item>
       <nz-form-item>
@@ -15,7 +19,7 @@
           <nz-input-group [nzPrefix]="prefixEmail">
             <input type="text" nz-input formControlName="email" placeholder="Email" />
           </nz-input-group>
-          <nz-form-explain *ngIf="registerForm.get('email')?.dirty && registerForm.get('email')?.errors"
+          <nz-form-explain *ngIf=" registerForm.controls['email'].invalid && ( registerForm.controls['email'].dirty ||  registerForm.controls['email'].touched)" style="color:red"
             >Please check your email!</nz-form-explain
           >
         </nz-form-control>
@@ -25,7 +29,7 @@
           <nz-input-group [nzPrefix]="prefixLock">
             <input type="password" nz-input formControlName="password" placeholder="Password" />
           </nz-input-group>
-          <nz-form-explain *ngIf="registerForm.get('password')?.dirty && registerForm.get('password')?.errors"
+          <nz-form-explain *ngIf=" registerForm.controls['password'].invalid && ( registerForm.controls['password'].dirty ||  registerForm.controls['password'].touched)" style="color:red"
             >Please input your Password!</nz-form-explain
           >
         </nz-form-control>
@@ -35,13 +39,13 @@
           <nz-input-group [nzPrefix]="prefixLock">
             <input type="password" nz-input formControlName="password_confirmation" placeholder="Repeat your Password" />
           </nz-input-group>
-          <nz-form-explain *ngIf="registerForm.get('password_confirmation')?.dirty && registerForm.get('password_confirmation')?.errors"
+          <nz-form-explain *ngIf=" registerForm.controls['password_confirmation'].invalid && ( registerForm.controls['password_confirmation'].dirty ||  registerForm.controls['password_confirmation'].touched)" style="color:red"
             >Please input the same Password!</nz-form-explain>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control>
-         <button nz-button class="login-form-button" [nzType]="'primary'">Sign up</button>
+         <button [nzLoading]="loading" [disabled]="registerForm.invalid" nz-button class="login-form-button" [nzType]="'primary'">Sign up</button>
           <span>
             Or    <a routerLink="../login">Login</a>    
           </span>

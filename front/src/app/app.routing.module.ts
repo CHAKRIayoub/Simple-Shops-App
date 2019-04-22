@@ -25,6 +25,7 @@ const routes: Routes = [
       loadChildren: './pages/index/index.module#IndexModule',
       canActivate: [IsLoggedService]
     },
+    { path: '**', redirectTo: '/index' }
 
 ];
 

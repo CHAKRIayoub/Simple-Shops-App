@@ -17,6 +17,12 @@ export class RegisterComponent implements OnInit {
   password: String;
   password_confirmation: String;
 
+  registerFail: boolean = false;
+  failMessage: string = 'error';
+
+  loading:boolean=false;
+
+
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
@@ -29,20 +35,24 @@ export class RegisterComponent implements OnInit {
       'name': new FormControl(this.name, [Validators.required]),
       'email': new FormControl(this.email, [Validators.required, Validators.email]),
       'password': new FormControl(this.password, [Validators.required]),
-      'password_confirmation': new FormControl(this.password, [Validators.required]),
+      'password_confirmation': new FormControl(this.password_confirmation, [Validators.required]),
     });
   
   }
 
   submitForm(): void {
+    this.loading = true;
     this.auth_service.signup(this.registerForm.value).subscribe(
         (data:any)=>{
-          this.auth_service.changeAuthStatus(true)
+          this.loading = false;
           this.token_service.setToken(data);
+          this.auth_service.changeAuthStatus(true)
           this.router.navigateByUrl('/index'); 
         },
         (error)=>{
-          console.log(error)
+          this.registerFail = true;
+          this.loading = true;
+          this.failMessage = error.error.message;
         }
       );
   }

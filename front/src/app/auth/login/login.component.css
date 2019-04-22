@@ -11,5 +11,6 @@
 }
 
 .login-container {
-  padding-top: 20%;
+  padding-top: 10%;
+  min-height: 100%;
 }
