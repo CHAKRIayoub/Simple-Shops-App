@@ -13,7 +13,6 @@ export class ShopComponent implements OnInit {
 
   @Input() shop: Shop;
   images_link:string = environment.images_link+"/shops/";
-  liked:boolean = false;
 
   constructor(private shops_service:ShopsService, private message: NzMessageService) {
   }
@@ -24,7 +23,7 @@ export class ShopComponent implements OnInit {
 
   likeShop(){
 
-    this.liked=true;
+    this.shop.liked=true;
 
   }
 

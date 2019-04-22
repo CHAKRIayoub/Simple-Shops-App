@@ -9,11 +9,12 @@ import { environment } from "./../../environments/environment";
 export class ShopsService {
 
   url:string = environment.api + '/shops';
+  userId = '?userId='+JSON.parse(localStorage.getItem('user')).id;
 
   constructor(private http: HttpClient) { }
 
   getShops() {
-    return this.http.get(this.url);
+    return this.http.get(this.url+this.userId);
   }
 
   like() {

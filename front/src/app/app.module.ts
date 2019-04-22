@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ShopsService } from './services/shops.service'
+import { AuthService } from './auth/services/auth.service';
+
 
 
 registerLocaleData(en);
@@ -30,7 +32,7 @@ registerLocaleData(en);
     NgZorroAntdModule
   ],
 
-  providers: [{ provide: NZ_I18N, useValue: en_US }, ShopsService],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, ShopsService, AuthService],
   bootstrap: [AppComponent],
 
 

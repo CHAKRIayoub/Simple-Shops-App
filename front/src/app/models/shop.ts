@@ -1,4 +1,5 @@
 export class Shop {
+
    
     constructor(
         private _id: number,
@@ -7,7 +8,14 @@ export class Shop {
         private _description: String,
         private _image: String,
         private _distance: Number,
-    ) { }
+        private _liked: boolean    ) { }
+
+    public get liked(): boolean {
+        return this._liked;
+    }
+    public set liked(value: boolean) {
+        this._liked = value;
+    }
 
     public get distance(): Number {
         return this._distance;

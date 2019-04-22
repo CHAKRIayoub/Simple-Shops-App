@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     this.auth_service.authStatut.subscribe(
-      (data)=>{ this.logged = data }
+      (data)=>{ this.logged = data; console.log(data) }
     );
 
   }
