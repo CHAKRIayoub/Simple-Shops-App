@@ -36,19 +36,15 @@ export class RegisterComponent implements OnInit {
 
   submitForm(): void {
     this.auth_service.signup(this.registerForm.value).subscribe(
-        (data)=>{
-          this.login(data)
+        (data:any)=>{
+          this.auth_service.changeAuthStatus(true)
+          this.token_service.setToken(data);
+          this.router.navigateByUrl('/index'); 
         },
         (error)=>{
           console.log(error)
         }
       );
-  }
-
-  login(data){
-    this.auth_service.changeAuthStatus(true)
-    this.token_service.setToken(data.access_token);
-    this.router.navigateByUrl('/app'); 
   }
 
 } 

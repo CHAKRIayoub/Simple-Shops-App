@@ -1,7 +1,20 @@
-<nz-header class="nz-header">
+<nz-header *ngIf="logged" class="nz-header">
 <div class="logo"> </div>
 <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" class="nz-menu">
     <li nz-menu-item routerLink="index" >Home</li>
     <li nz-menu-item routerLink="shops" >Shops</li>
+    <li nz-menu-item  class="float-right">
+        <nz-dropdown>
+            <a nz-dropdown>       
+                    <i nz-icon type="user" style="font-size: 32px;"></i>
+                {{ userName }}  </a>
+            <ul nz-menu nzSelectable>
+                <li nz-menu-item>
+                <a (click)="logout()" >log out</a>
+                </li>
+            </ul>
+        </nz-dropdown>
+    </li>
 </ul>
+
 </nz-header>

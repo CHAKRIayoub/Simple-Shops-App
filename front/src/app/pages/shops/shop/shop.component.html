@@ -1,4 +1,4 @@
-<nz-card nzHoverable [nzCover]="coverTemplate" [nzActions]="[like, dislike]">
+<nz-card nzHoverable [nzCover]="coverTemplate" [nzActions]="[like]">
     <nz-card-meta [nzTitle]="titleTemplate" [nzDescription]="shop.description"></nz-card-meta>
 </nz-card>
 
@@ -12,10 +12,10 @@
     <img [alt]="shop.image" [src]="images_link+shop.image" />
 </ng-template>
 
-<ng-template #like>
-    <i nz-icon nzType="like" nzTheme="outline"></i>
+<ng-template  #like>
+        <div (click)="likeShop()" class="action-wrapper">
+                <i  style="color:#4684ee"  nz-icon nzType="like" [nzTheme]="(liked)?'fill':'outline'"></i>
+        </div>
+
 </ng-template>
 
-<ng-template #dislike>
-    <i nz-icon nzType="dislike" nzTheme="outline"></i>
-</ng-template>

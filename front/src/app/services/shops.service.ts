@@ -15,5 +15,9 @@ export class ShopsService {
   getShops() {
     return this.http.get(this.url);
   }
+
+  like() {
+    return this.http.post(this.url,{});
+  }
   
 }

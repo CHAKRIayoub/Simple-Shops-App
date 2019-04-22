@@ -14,8 +14,7 @@ export class IsNotLoggedService  implements CanActivate {
 
     console.log(this.token_service.loggedIn());
     if(this.token_service.loggedIn()==true) {
-      this.router.navigate(['/app']);
-      console.log('redirected to /app');
+      this.router.navigate(['/index']);
 
     }
 

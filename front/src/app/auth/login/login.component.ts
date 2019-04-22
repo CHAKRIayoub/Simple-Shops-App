@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
 
       this.auth_service.login(this.loginForm.value).subscribe(
-        (data) => this.login(data),
+        (data:any) => {
+          this.auth_service.changeAuthStatus(true)
+          this.token_service.setToken(data);
+          this.router.navigateByUrl('/index'); 
+        },
         (error)=>{
           this.loginFail = true;
         }
@@ -43,10 +47,5 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login(data){
-    this.auth_service.changeAuthStatus(true)
-    this.token_service.setToken(data.access_token);
-    this.router.navigateByUrl('/app'); 
-  }
 
 }

@@ -9,9 +9,7 @@ import { ShopsService } from 'src/app/services/shops.service';
 })
 export class ListShopsComponent implements OnInit {
 
-  
   shops:Shop[];
-  ViewList = 'nearby';
 
   constructor(private shops_service:ShopsService) {
     this.initShops()
@@ -24,7 +22,10 @@ export class ListShopsComponent implements OnInit {
   initShops() {
     this.shops_service.getShops().subscribe(
       (shops:Shop[])=>{
-        this.shops = shops
+
+        this.shops = shops;
+        shops.sort(this.compareShopesByDistance );
+
       },
       
       (error)=>{
@@ -35,6 +36,16 @@ export class ListShopsComponent implements OnInit {
 
   switchList(str){
 
+  }
+
+  compareShopesByDistance(a:Shop, b:Shop):number{
+    if ( a.distance < b.distance ){
+      return -1;
+    }
+    if ( a.distance > b.distance ){
+      return 1;
+    }
+    return 0;
   }
 
 }

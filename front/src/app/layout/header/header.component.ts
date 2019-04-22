@@ -11,12 +11,20 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   logged:boolean;
+  userName:string = '';
 
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
     private router:Router,
-  ) { }
+  ) { 
+
+    this.logged = this.token_service.loggedIn()
+    if(this.logged)
+      this.userName = JSON.parse(localStorage.getItem('user')).name;
+    
+  
+  }
 
   ngOnInit() {
 

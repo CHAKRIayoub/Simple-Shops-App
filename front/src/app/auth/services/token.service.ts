@@ -18,8 +18,10 @@ export class TokenService {
         // private http: HttpClient
     ){ }
 
-    setToken(token){
-        localStorage.setItem('token', token);
+    setToken(data){
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
     }
 
 
@@ -27,8 +29,10 @@ export class TokenService {
         return localStorage.getItem('token');
     }
 
+
     removeToken() {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
     }
 
     isTokenValid() {
