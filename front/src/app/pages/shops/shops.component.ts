@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Shop } from 'src/app/models/shop';
 import { ShopsService } from 'src/app/services/shops.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shops',
   templateUrl: './shops.component.html',
   styleUrls: ['./shops.component.css']
 })
-export class ListShopsComponent implements OnInit {
+export class ListShopsComponent implements OnInit, OnDestroy {
 
   shops:Shop[];
   Filtredshops:Shop[];
   FiltreBy:string='nearby';
+  subscriptions: Subscription[] = [];
+
 
   constructor(private shops_service:ShopsService) {
     
@@ -19,9 +22,9 @@ export class ListShopsComponent implements OnInit {
     this.Filtredshops=[];
     this.initShops();
 
-    shops_service.refreshListObservable.subscribe( () => {
+    this.subscriptions.push(shops_service.refreshListObservable.subscribe( () => {
       this.switchList(this.FiltreBy);
-    });
+    }));
 
   }
 
@@ -31,7 +34,7 @@ export class ListShopsComponent implements OnInit {
   // get the list of shops & filtre it
   initShops() {
 
-    this.shops_service.getShops().subscribe(
+    this.subscriptions.push(this.shops_service.getShops().subscribe(
       (shops:Shop[])=>{
         this.shops = shops;
         shops.sort(this.compareShopesByDistance );
@@ -40,7 +43,7 @@ export class ListShopsComponent implements OnInit {
       (error)=>{
         console.log(error)
       }
-    );
+    ));
   
   }
 
@@ -64,5 +67,10 @@ export class ListShopsComponent implements OnInit {
   
   }
 
+  ngOnDestroy(){
+		this.subscriptions.forEach((subscription)=>{
+			subscription.unsubscribe();
+		})
+	}
 
 }

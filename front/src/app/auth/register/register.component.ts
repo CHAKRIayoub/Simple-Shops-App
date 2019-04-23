@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy  {
 
   registerForm: FormGroup;
   name:string;
@@ -20,6 +21,8 @@ export class RegisterComponent implements OnInit {
   registerFail: boolean = false;
   failMessage: string = 'error';
   loading:boolean=false;
+  subscriptions: Subscription[] = [];
+
 
   constructor(
     private auth_service:AuthService,
@@ -43,7 +46,7 @@ export class RegisterComponent implements OnInit {
   submitForm(): void {
 
     this.loading = true;
-    this.auth_service.signup(this.registerForm.value).subscribe(
+    this.subscriptions.push(this.auth_service.signup(this.registerForm.value).subscribe(
         (data:any)=>{
           this.loading = false;
           this.token_service.setToken(data);
@@ -55,8 +58,16 @@ export class RegisterComponent implements OnInit {
           this.loading = true;
           this.failMessage = error.error.message;
         }
-      );
+      ));
 
   }
+
+
+  ngOnDestroy(){
+		this.subscriptions.forEach((subscription)=>{
+			subscription.unsubscribe();
+		})
+  }
+  
 
 } 

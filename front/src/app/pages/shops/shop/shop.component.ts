@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Shop } from 'src/app/models/shop';
 import { environment } from 'src/environments/environment';
 import { ShopsService } from 'src/app/services/shops.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shop',
@@ -9,10 +10,12 @@ import { ShopsService } from 'src/app/services/shops.service';
   styleUrls: ['./shop.component.css']
 })
 
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
 
   @Input() shop: Shop;
   images_link:string = environment.images_link+"/shops/";
+  subscriptions: Subscription[] = [];
+
 
   constructor(private shops_service:ShopsService) {
   }
@@ -24,14 +27,20 @@ export class ShopComponent implements OnInit {
   likeOrDislikeShop(){ 
 
     this.shop.liked=!this.shop.liked;
-    this.shops_service.like(this.shop.id, this.shop.liked).subscribe(
-      ()=>{
+    this.subscriptions.push( this.shops_service.like(this.shop.id, this.shop.liked).subscribe(
+      (response)=>{
         this.shops_service.refreshList();
       },
-      ()=>{},
-    );
+      (error)=>{ },
+    ));
 
   }
+
+  ngOnDestroy(){
+		this.subscriptions.forEach((subscription)=>{
+			subscription.unsubscribe();
+		})
+	}
 
 
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   email: String;
   password: String;
   loginFail: boolean = false;
   loading:boolean=false;
+  subscriptions: Subscription[] = [];
+
 
   constructor(
     private auth_service:AuthService,
@@ -38,7 +41,7 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
 
       this.loading = true;
-      this.auth_service.login(this.loginForm.value).subscribe(
+      this.subscriptions.push(this.auth_service.login(this.loginForm.value).subscribe(
         (data:any) => {
           this.token_service.setToken(data);
           this.auth_service.changeAuthStatus(true)
@@ -50,9 +53,15 @@ export class LoginComponent implements OnInit {
           this.loginFail = true;
           this.loading = false;
         }
-      );
+      ))
 
   }
+
+  ngOnDestroy(){
+		this.subscriptions.forEach((subscription)=>{
+			subscription.unsubscribe();
+		})
+	}
 
 
 }
