@@ -48,10 +48,14 @@
 1 - `git clone https://github.com/CHAKRIayoub/Simple-Shops-App.git`
 
 ##### backend => /back folder
-2  - `composer install`
+
+2 - create the .env file (copy from .env.example) and run `php artisan key:generate`
+3 - `composer install`
+4 - set your database connection
+5 - `php artisan migrate` for database
 
 ##### frontend => /front folder
-2  - `npm install`
-3 - set the backend api in /front/src/environments/environment.ts for local dev, or /front/src/environments/environment.prod.ts for prod dev
+2 - `npm install`
+3 - set the backend api in /front/src/environments/environment.ts for dev mode, or /front/src/environments/environment.prod.ts for production
 
 
