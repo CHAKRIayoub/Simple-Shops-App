@@ -1,20 +1,142 @@
-<nz-header *ngIf="logged" class="nz-header">
-<div class="logo"> </div>
-<ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" class="nz-menu">
-    <li nz-menu-item routerLink="index" >Home</li>
-    <li nz-menu-item routerLink="shops" >Shops</li>
-    <li nz-menu-item  class="float-right">
-        <nz-dropdown>
-            <a nz-dropdown>       
-                    <i nz-icon type="user" style="font-size: 32px;"></i>
-                {{ userName }}  </a>
-            <ul nz-menu nzSelectable>
-                <li nz-menu-item>
-                <a (click)="logout()" >log out</a>
-                </li>
-            </ul>
-        </nz-dropdown>
-    </li>
-</ul>
+<header>
+        <div class="header-part header-reduce sticky">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-top-inner">
+                        <div class="header-top-left">
+                            <a href="#" class="top-cell"><img src="assets/images/fon.png" alt=""> <span>0529456789</span></a>
+                            <a href="#" class="top-email"><span>khouloud@restaurant.com</span></a>
+                        </div>
+                        <div class="header-top-right">
+                            <div class="social-top">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="header-info">
+                        <div class="header-info-inner">
 
-</nz-header>
+                            <!-- recherche
+                            <div class="search-part">
+                                <a href="#"></a>
+                                <div class="search-box">
+                                    <input type="text" name="txt" placeholder="Search">
+                                    <input type="submit" name="submit" value=" ">
+                                </div>
+                            </div> -->
+
+                            <!-- //panier -->
+                            <div class="shop-cart header-collect">
+                                <a href="#"><img src="assets/images/icon-basket.png" alt="">2 Articles - 20.89 DH</a>
+                                <div class="cart-wrap">
+                                    <div class="cart-blog">
+                                        <div class="cart-item">
+                                            <div class="cart-item-left">
+                                                <img src="assets/images/img59.png" alt="">
+                                            </div>
+                                            <div class="cart-item-right">
+                                                <h6>Caramel Chesse Cake</h6>
+                                                <span>$ 14.00</span>
+                                            </div>
+                                            <span class="delete-icon"></span>
+                                        </div>
+                                        <div class="cart-item">
+                                            <div class="cart-item-left">
+                                                <img src="assets/images/img60.png" alt="">
+                                            </div>
+                                            <div class="cart-item-right">
+                                                <h6>Caramel Chesse Cake</h6>
+                                                <span>$ 14.00</span>
+                                            </div>
+                                            <span class="delete-icon"></span>
+                                        </div>
+                                        <div class="subtotal">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <h6>Subtotal :</h6>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <span>$ 140.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-btn">
+                                            <a href="#" class="btn-black view">VIEW ALL</a>
+                                            <a href="#" class="btn-main checkout">CHECK OUT</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- login -->
+                             <div *ngIf="!logged" class="book-table header-collect book-md">
+                                <a href="#" (click)="$event.preventDefault(); createTplModal(tplTitle, tplContent, tplFooter)" ><img src="assets/images/user.png" alt="">Connexion</a>
+                                      <ng-template #tplTitle>
+                                        <span> <i nz-icon nzType="login">Connexion</i></span>
+                                      </ng-template>
+                                      <ng-template #tplContent>
+                                        
+                                      </ng-template> 
+                                      <ng-template #tplFooter>
+                                        <button nz-button nzType="primary" (click)="destroyTplModal()" [nzLoading]="tplModalButtonLoading">
+                                          Close after submit
+                                        </button>
+                                      </ng-template>
+                            </div>
+                            <div *ngIf="logged" class="book-table header-collect book-md">
+                                <img src="assets/images/user.png" alt="">
+                                <nz-dropdown>
+                                    <a style="color: #fff" nz-dropdown> {{ userName }}  </a>
+                                    <ul nz-menu nzSelectable>
+                                        <li nz-menu-item>
+                                            <a (click)="logout()" > Deconnexion</a>
+                                        </li>
+                                    </ul>
+                                </nz-dropdown>
+
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-icon">
+                        <a href="#" class="hambarger">
+                            <span class="bar-1"></span>
+                            <span class="bar-2"></span>
+                            <span class="bar-3"></span>
+                        </a>
+                    </div>
+                    <div class="book-table header-collect book-sm">
+                        <a href="#" data-toggle="modal" data-target="#booktable"><img src="assets/images/icon-table.png" alt="">Book a Table</a>
+                    </div>
+                    <div class="menu-main">
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Menu</a>
+                            </li>
+
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo">
+                        <a href="#"><img style="box-shadow: 1px 1px 10px 1px #000;
+                            border-radius: 50%;" src="assets/images/newlogo5.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

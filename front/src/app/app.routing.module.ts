@@ -10,20 +10,19 @@ const routes: Routes = [
     {
       path: 'auth',
       loadChildren: './auth/auth.module#AuthModule',
-      canActivate: [IsNotLoggedService]
+      // canActivate: [IsNotLoggedService]
     }, 
 
-    {
-      path: 'shops',
-      loadChildren: './pages/shops/shops.module#ShopsModule',
-      canActivate: [IsLoggedService]
+    // {
+    //   path: 'shops',
+    //   loadChildren: './pages/shops/shops.module#ShopsModule',
+    //   canActivate: [IsLoggedService]
 
-    },
+    // },
 
     {
       path: 'index',
       loadChildren: './pages/index/index.module#IndexModule',
-      canActivate: [IsLoggedService]
     },
     { path: '**', redirectTo: '/index' }
 

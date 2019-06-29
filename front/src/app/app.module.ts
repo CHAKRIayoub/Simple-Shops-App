@@ -11,6 +11,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ShopsService } from './services/shops.service'
 import { AuthService } from './auth/services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +30,8 @@ registerLocaleData(en);
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    FormsModule
   ],
 
   providers: [{ provide: NZ_I18N, useValue: en_US }, ShopsService, AuthService],
