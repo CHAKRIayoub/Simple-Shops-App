@@ -23,73 +23,65 @@
                 <div class="menu-wrapper menu-return">
                     <div class="portfolioFilter">
                         <div class="portfolioFilter-inner">
-                            <a href="javascript:;" data-filter="*" class=""><span><img src="assets/images/icon40.png" alt=""></span>All</a>
-                            <a href="javascript:;" data-filter=".breakfast" class=""><span><img src="assets/images/icon37.png" alt=""></span>BREAKFAST</a>
-                            <a href="javascript:;" data-filter=".dessert" class=""><span><img src="assets/images/icon38.png" alt=""></span>DESSERT</a>
-                            <a href="javascript:;" data-filter=".dinner" class=""><span><img src="assets/images/icon39.png" alt=""></span>DINNER</a>
-                            <a href="javascript:;" data-filter=".freshfood" class=""><span><img src="assets/images/icon40.png" alt=""></span>FRESHFOOD</a>
-                            <a href="javascript:;" data-filter=".lunch" class="current"><span><img src="assets/images/icon41.png" alt=""></span>LUNCH</a>
+                            <a href="javascript:;"  data-filter="*" class="current"><span><img style="height: 44px;" src="assets/categories/all.png" alt=""></span>All</a>
+                            <a href="javascript:;"  data-filter=".TACOS" class=""><span><img style="height: 51px;" src="assets/categories/tacos.png" alt=""></span>TACOS</a>
+                            <a href="javascript:;"  data-filter=".PIZZA" class=""><span><img style="height: 43px;" src="assets/categories/pizza.png" alt=""></span>PIZZA</a>
+                            <a href="javascript:;" data-filter=".TAJINE" class=""><span><img style="height: 39px;" src="assets/categories/tajine.png" alt=""></span>TAJINE</a>
+                            <a href="javascript:;"  data-filter=".PASTA" class=""><span><img style="height: 39px;" src="assets/categories/pasta.png" alt=""></span>PASTA</a>
+                            <a href="javascript:;"  data-filter=".SOUPE" class=""><span><img style="height: 35px;" src="assets/categories/soupe.png" alt=""></span>SOUPE</a>
                         </div>
                     </div>
                     <div class="portfolioContainer row" style="position: relative; height: 151px;">
-                        <div class="col-md-6 col-sm-6 col-xs-12 isotope-item breakfast" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div class="menu-list">
+                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item TACOS" style="position: absolute; left: 0px; top: 0px; display: none;">
+                            <div *ngIf="repa.categorie_id == 2" class="menu-list">
                                 <span class="menu-list-product">
-                                    <img src="assets/images/img3.png" alt="">
+                                    <img src="assets/categories/{{repa.image}}.png" alt="">
                                 </span>
-                                <h5>LASAL CHEESE <span>$ 15.00</span></h5>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
+                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                <p> {{repa.description}}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 isotope-item lunch" style="position: absolute; left: 0px; top: 0px;">
-                            <div class="menu-list">
+                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item SOUPE" style="position: absolute; left: 0px; top: 0px;">
+                            <div *ngIf="repa.categorie_id == 4" class="menu-list">
                                 <span class="menu-list-product">
-                                    <img src="assets/images/img4.png" alt="">
+                                    <img src="assets/categories/{{repa.image}}.png" alt="">
                                 </span>
-                                <h5>JUMBO CARB SHRIMP <span>$ 25.00</span></h5>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
+                                <h5> {{repa.name}} <span>$ {{repa.price_unit}}</span></h5>
+                                <p> {{repa.description}}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 isotope-item dessert" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div class="menu-list">
+                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item PIZZA" style="position: absolute; left: 0px; top: 0px; display: none;">
+                            <div *ngIf="repa.categorie_id == 1" class="menu-list">
                                 <span class="menu-list-product">
-                                    <img src="assets/images/img5.png" alt="">
+                                    <img src="assets/categories/{{repa.image}}.png" alt="">
                                 </span>
-                                <h5>SURMAI CHILLI <span>$ 15.00</span></h5>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
+                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                <p> {{repa.description}}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 isotope-item dinner" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div class="menu-list">
+                        <div *ngFor="let repa of repas"  class="col-md-6 col-sm-6 col-xs-12 isotope-item TAJINE" style="position: absolute; left: 0px; top: 0px; display: none;">
+                            <div *ngIf="repa.categorie_id == 3" class="menu-list">
                                 <span class="menu-list-product">
-                                    <img src="assets/images/img6.png" alt="">
+                                    <img src="assets/categories/{{repa.image}}.png" alt="">
                                 </span>
-                                <h5>CAPO STEAK <span>$ 45.00</span></h5>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
+                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                <p> {{repa.description}}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 isotope-item freshfood" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div class="menu-list">
+                        <div *ngFor="let repa of repas"  class="col-md-6 col-sm-6 col-xs-12 isotope-item PASTA" style="position: absolute; left: 0px; top: 0px; display: none;">
+                            <div *ngIf="repa.categorie_id == 5" class="menu-list">
                                 <span class="menu-list-product">
-                                    <img src="assets/images/img7.png" alt="">
+                                    <img src="assets/categories/{{repa.image}}.png" alt="">
                                 </span>
-                                <h5>ORGANIC FRUIT SALAD <span>$ 15.00</span></h5>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
+                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                <p> {{repa.description}}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 isotope-item freshfood" style="position: absolute; left: 585px; top: 0px; display: none;">
-                            <div class="menu-list">
-                                <span class="menu-list-product">
-                                    <img src="assets/images/img8.png" alt="">
-                                </span>
-                                <h5>PRAWNS BUTTER GARLIC <span>$ 15.00</span></h5>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
-                            </div>
-                        </div>
+                       
                     </div>
-                    <div class="btn-outer">
+                    <!-- <div class="btn-outer">
                         <a href="#" class="btn-main">Explore Full Menu</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="float-main">

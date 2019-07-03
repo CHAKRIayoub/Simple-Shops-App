@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ShopsService } from './services/shops.service'
+import { RepasService } from './services/repas.service'
 import { AuthService } from './auth/services/auth.service';
 import { FormsModule } from '@angular/forms';
 
@@ -34,7 +35,7 @@ registerLocaleData(en);
     FormsModule
   ],
 
-  providers: [{ provide: NZ_I18N, useValue: en_US }, ShopsService, AuthService],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, ShopsService,RepasService, AuthService],
   bootstrap: [AppComponent],
 
 

@@ -203,7 +203,7 @@ tr th{padding:5px 10px;border:1px solid #797979;}
 section:after,
 section:before{clear:both;content:"";display:table;}
 section{clear:both;padding:60px 0;position:relative;}
-section.home-icon{padding:80px 0 140px;}
+section.home-icon{padding:80px 0 140px;background-color: white;}
 ::-webkit-input-placeholder{opacity:1 !important;}
 :-moz-placeholder{opacity:1 !important;}
 ::-moz-placeholder{opacity:1 !important;}
@@ -804,7 +804,7 @@ textarea{height:175px;padding:25px 30px;width:100%;border:2px solid #e5e5ee;-web
 .dishes-expand .slick-next:hover,
 .dishes-expand .slick-next:focus{background:url('../images/arrow-right-active.png') no-repeat center center;}
 .menu-return .portfolioFilter-inner{box-shadow:none !important;background:none !important;}
-.menu-return .portfolioFilter a{color:#ffffff;}
+.menu-return .portfolioFilter a{color:black;}
 .menu-return .portfolioFilter a span{display:block;margin-bottom:5px;}
 .menu-return .portfolioFilter a.current{background:transparent;color:#e4b95b;}
 .footer-inset{color:#5e5e75;display:inline-block;width:100%;font-size:13px;line-height:24px;padding-bottom:25px;}
