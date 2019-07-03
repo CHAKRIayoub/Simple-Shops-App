@@ -7,11 +7,11 @@ import { IsNotLoggedService } from './auth/services/is-not-logged.service'
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'index' },
     
-    {
-      path: 'auth',
-      loadChildren: './auth/auth.module#AuthModule',
-      // canActivate: [IsNotLoggedService]
-    }, 
+    // {
+    //   path: 'auth',
+    //   loadChildren: './auth/auth.module#AuthModule',
+    //   // canActivate: [IsNotLoggedService]
+    // }, 
 
     // {
     //   path: 'shops',

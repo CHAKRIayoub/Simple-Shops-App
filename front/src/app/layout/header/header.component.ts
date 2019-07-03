@@ -1,34 +1,47 @@
-import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { TokenService } from 'src/app/auth/services/token.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { NzModalService, NzModalRef } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-header', 
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit, OnDestroy {
 
   logged:boolean;
   userName:string = '';
   subscriptions: Subscription[] = [];
-  tplModal: NzModalRef;
-  tplModalButtonLoading = false;
+  isLoginVisible = false;
+  isRegisterVisible = false;
+  isConfirmLoading = false;
+  loginForm: FormGroup;
+  email: String;
+  password: String;
+  loginFail: boolean = false;
+  loading:boolean=false;
 
+  registerForm: FormGroup;
+  name:string;
+  remail: String;
+  rpassword: String;
+  password_confirmation: String;
+  registerFail: boolean = false;
+  failMessage: string = 'erreur';
 
   constructor(
     private auth_service:AuthService,
     private token_service:TokenService,
     private router:Router,
-    private modalService: NzModalService,
   ) { 
     this.logged = this.token_service.loggedIn();
     if(this.logged) this.userName = JSON.parse(localStorage.getItem('user')).name;
   }
-
   
   ngOnInit() {
     
@@ -40,6 +53,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     ));
 
+    this.loginForm = new FormGroup({
+      'email': new FormControl(this.email, [Validators.required, Validators.email]),
+      'password': new FormControl(this.password, [Validators.required]),
+    });
+
+    this.registerForm = new FormGroup({
+      'name': new FormControl(this.name, [Validators.required]),
+      'remail': new FormControl(this.remail, [Validators.required, Validators.email]),
+      'rpassword': new FormControl(this.rpassword, [Validators.required]),
+      'password_confirmation': new FormControl(this.password_confirmation, [Validators.required]),
+    });
+
+  }
+
+  submitForm(): void {
+
+    this.loading = true;
+    this.subscriptions.push(this.auth_service.login(this.loginForm.value).subscribe(
+      (data:any) => {
+        this.token_service.setToken(data);
+        this.auth_service.changeAuthStatus(true)
+        this.router.navigateByUrl('/index'); 
+        this.loading = false;
+        this.isLoginVisible = false;
+        this.isRegisterVisible = false;
+      },
+      (error)=>{
+        this.loginFail = true;
+        this.loading = false;
+      }
+    ))
+
   }
 
 
@@ -48,7 +93,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.auth_service.changeAuthStatus(false)
     this.token_service.removeToken()
     this.userName = ''
-    this.router.navigateByUrl('/auth/login'); 
   
   }
 
@@ -59,23 +103,35 @@ export class HeaderComponent implements OnInit, OnDestroy {
 		})
   }
   
-  createTplModal(tplTitle: TemplateRef<{}>, tplContent: TemplateRef<{}>, tplFooter: TemplateRef<{}>): void {
-    this.tplModal = this.modalService.create({
-      nzTitle: tplTitle,
-      nzContent: tplContent,
-      nzFooter: tplFooter,
-      nzMaskClosable: false,
-      nzClosable: false,
-      nzOnOk: () => console.log('Click ok')
-    });
+  showModal(): void {
+    this.isLoginVisible = true;
+    this.isRegisterVisible = false;
   }
 
-  destroyTplModal(): void {
-    this.tplModalButtonLoading = true;
-    setTimeout(() => {
-      this.tplModalButtonLoading = false;
-      this.tplModal.destroy();
-    }, 1000);
+  showRegisterModal(){
+    this.isRegisterVisible = true;
+    this.isLoginVisible = false;
+  }
+
+  submitRegisterForm(): void {
+
+    this.loading = true;
+    this.subscriptions.push(this.auth_service.signup(this.registerForm.value).subscribe(
+        (data:any)=>{
+          this.loading = false;
+          this.token_service.setToken(data);
+          this.auth_service.changeAuthStatus(true)
+          this.router.navigateByUrl('/index'); 
+          this.isLoginVisible = false;
+          this.isRegisterVisible = false;
+        },
+        (error)=>{
+          this.registerFail = true;
+          this.loading = false;
+          this.failMessage = error.error.message;
+        }
+      ));
+
   }
 
 }
