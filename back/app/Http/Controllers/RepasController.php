@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repa;
+use App\Categorie;
 
 class RepasController extends Controller
 {
@@ -15,6 +16,11 @@ class RepasController extends Controller
 		->select('repas.*','categories.name as categorie_name')
 		->get();
 		return $repas;
+	}
+	public function Categories()
+	{
+		$categories=Categorie::get();
+		return $categories;
 	}
 
 }
