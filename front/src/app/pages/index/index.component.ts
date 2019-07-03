@@ -12,16 +12,21 @@ export class IndexComponent implements OnInit {
   logocategorie=environment.logoCatgorie;
   constructor(
     private repasService:RepasService,
-    public _d: DomSanitizer) { this.repasService.getRepas().subscribe(
+    public _d: DomSanitizer) { 
+      this.repasService.getRepas().subscribe(
       (response:any)=>{
        this.repas=response;
        console.log(this.repas);
       },
       (error)=>{ },
-    ); }
+    ); 
+  }
 
   ngOnInit() {
    
+  }
+  gotoRepa(repa){
+    this.repasService.getRepa(repa);
   }
 
 }

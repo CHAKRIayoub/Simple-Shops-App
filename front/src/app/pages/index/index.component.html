@@ -17,8 +17,11 @@
             
             <div class="container">
                 <div class="build-title">
-                    <h2>Our Special Menu</h2>
-                    <h6>The role of a good cook ware in the preparation of a sumptuous meal cannot be over emphasized then one consider white bread</h6>
+                    <h2>Notre menu spécial</h2>
+                    <h6>
+                        Essayez avec cette orthographe : The role of a good cook ware in the preparation of a sumptuous meal cannot be overemphasized than one consider white bread
+
+                        On ne saurait trop insister sur le rôle d’une bonne cuisine dans la préparation d’un repas somptueux, alors on considère le pain blanc</h6>
                 </div>
                 <div class="menu-wrapper menu-return">
                     <div class="portfolioFilter">
@@ -34,11 +37,15 @@
                     <div class="portfolioContainer row" style="position: relative; height: 151px;">
                         <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item TACOS" style="position: absolute; left: 0px; top: 0px; display: none;">
                             <div *ngIf="repa.categorie_id == 2" class="menu-list">
-                                <span class="menu-list-product">
-                                    <img src="assets/categories/{{repa.image}}.png" alt="">
-                                </span>
-                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                <p> {{repa.description}}</p>
+                                <a (click)="gotoRepa(repa)">
+                                    <span class="menu-list-product">
+                                        <img src="assets/categories/{{repa.image}}.png" alt="">
+                                    </span>
+                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                    <p> {{repa.description}}</p>
+                                </a>
+                                
+
                             </div>
                         </div>
                         <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item SOUPE" style="position: absolute; left: 0px; top: 0px;">
