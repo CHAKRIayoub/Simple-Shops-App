@@ -16,6 +16,8 @@ Route::group(['middleware'=>'api'], function($router){
 	Route::post('shops/like','ShopController@like');
 	Route::post('shops/dislike','ShopController@dislike');
 
-	
+	//repas
+	Route::get('repas','RepasController@Repas');
+	Route::get('categories','RepasController@Categories');
 
 });

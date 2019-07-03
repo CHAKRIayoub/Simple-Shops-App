@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   api: 'http://localhost:8000/api',
-  images_link : 'http://localhost:8000/images'
+  images_link : 'http://localhost:8000/images',
+  logoCatgorie: "http://localhost/Image_res/categories/",
 };
 
 /*
