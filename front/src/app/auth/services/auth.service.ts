@@ -19,7 +19,7 @@ export class AuthService {
    ) { }
 
   
-   login(data){
+  login(data){
 
     return this.http.post(environment.api+'/login', data)
   
@@ -27,6 +27,11 @@ export class AuthService {
 
 
   signup(data){
+
+    console.log(data);
+
+    data.email = data.remail;
+    data.password = data.rpassword;
   
     return this.http.post(environment.api+'/signup', data)
   
