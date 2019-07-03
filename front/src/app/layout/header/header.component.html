@@ -127,7 +127,7 @@
                                 
                                     <ng-template #modalFooter>
                                         <button [nzLoading]="loading" (click)="submitForm()" [disabled]="loginForm.invalid" nz-button class="login-form-button" [nzType]="'primary'">Connexion <i nz-icon type="login"></i></button>
-                                        <a class="float-left" href="#" (click)="$event.preventDefault(); showRegisterModal();" >Inscrire</a>
+                                        <a class="float-left" href="#" (click)="$event.preventDefault(); showRegisterModal();" >Inscription</a>
                                     </ng-template>
 
                                 </nz-modal>
@@ -233,7 +233,7 @@
             </ng-template>
         
             <ng-template #registerModalFooter>
-                <button [nzLoading]="loading" (click)="submitRegisterForm()" [disabled]="registerForm.invalid" nz-button class="login-form-button" [nzType]="'primary'">Sign up</button>
+                <button [nzLoading]="loading" (click)="submitRegisterForm()" [disabled]="registerForm.invalid" nz-button class="login-form-button" [nzType]="'primary'">Inscrire</button>
                 <a class="float-left" href="#" (click)="$event.preventDefault(); showModal();" >Connexion</a>
             </ng-template>
 

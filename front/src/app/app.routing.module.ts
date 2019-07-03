@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IsLoggedService } from './auth/services/is-logged.service'
 import { IsNotLoggedService } from './auth/services/is-not-logged.service'
+import { RepasDetailComponent } from './pages/repas-detail/repas-detail.component';
+
 
 
 const routes: Routes = [
@@ -13,12 +15,12 @@ const routes: Routes = [
     //   // canActivate: [IsNotLoggedService]
     // }, 
 
-    // {
-    //   path: 'shops',
-    //   loadChildren: './pages/shops/shops.module#ShopsModule',
-    //   canActivate: [IsLoggedService]
+    {
+      path: 'repas/:id',
+      component: RepasDetailComponent
+      // canActivate: [IsLoggedService]
 
-    // },
+    },
 
     {
       path: 'index',

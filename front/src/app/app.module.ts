@@ -12,6 +12,7 @@ import en from '@angular/common/locales/en';
 import { ShopsService } from './services/shops.service'
 import { AuthService } from './auth/services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RepasDetailComponent } from './pages/repas-detail/repas-detail.component';
 
 
 
@@ -23,7 +24,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent, 
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RepasDetailComponent
   ],
 
   imports: [
