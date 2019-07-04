@@ -17,7 +17,7 @@
             
             <div class="container">
                 <div class="build-title">
-                    <h2>Notre menu spécial</h2>
+                    <h2>Notre Menu spécial</h2>
                     <h6>
                         Essayez avec cette orthographe : The role of a good cook ware in the preparation of a sumptuous meal cannot be overemphasized than one consider white bread
 
@@ -26,12 +26,12 @@
                 <div class="menu-wrapper menu-return">
                     <div class="portfolioFilter">
                         <div class="portfolioFilter-inner">
-                            <a href="javascript:;"  data-filter="*" class="current"><span><img style="height: 44px;" src="assets/categories/all.png" alt=""></span>All</a>
-                            <a href="javascript:;"  data-filter=".TACOS" class=""><span><img style="height: 51px;" src="assets/categories/tacos.png" alt=""></span>TACOS</a>
-                            <a href="javascript:;"  data-filter=".PIZZA" class=""><span><img style="height: 43px;" src="assets/categories/pizza.png" alt=""></span>PIZZA</a>
-                            <a href="javascript:;" data-filter=".TAJINE" class=""><span><img style="height: 39px;" src="assets/categories/tajine.png" alt=""></span>TAJINE</a>
-                            <a href="javascript:;"  data-filter=".PASTA" class=""><span><img style="height: 39px;" src="assets/categories/pasta.png" alt=""></span>PASTA</a>
-                            <a href="javascript:;"  data-filter=".SOUPE" class=""><span><img style="height: 35px;" src="assets/categories/soupe.png" alt=""></span>SOUPE</a>
+                            <a href="javascript:;"   data-filter="*" class=""><span><img style="height: 44px;" src="assets/categories/all.png" alt=""></span>All</a>
+                            <a href="javascript:;"   data-filter=".TACOS" class=""><span><img style="height: 51px;" src="assets/categories/tacos.png" alt=""></span>TACOS</a>
+                            <a href="javascript:;"   data-filter=".PIZZA" class=""><span><img style="height: 43px;" src="assets/categories/pizza.png" alt=""></span>PIZZA</a>
+                            <a href="javascript:;"  data-filter=".TAJINE" class=""><span><img style="height: 39px;" src="assets/categories/tajine.png" alt=""></span>TAJINE</a>
+                            <a href="javascript:;"   data-filter=".PASTA" class=""><span><img style="height: 39px;" src="assets/categories/pasta.png" alt=""></span>PASTA</a>
+                            <a href="javascript:;" data-filter=".SOUPE" class="current"><span><img style="height: 35px;" src="assets/categories/soupe.png" alt=""></span>SOUPE</a>
                         </div>
                     </div>
                     <div class="portfolioContainer row" style="position: relative; height: 151px;">
@@ -50,38 +50,46 @@
                         </div>
                         <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item SOUPE" style="position: absolute; left: 0px; top: 0px;">
                             <div *ngIf="repa.categorie_id == 4" class="menu-list">
-                                <span class="menu-list-product">
-                                    <img src="assets/categories/{{repa.image}}.png" alt="">
-                                </span>
-                                <h5> {{repa.name}} <span>$ {{repa.price_unit}}</span></h5>
-                                <p> {{repa.description}}</p>
+                                <a (click)="gotoRepa(repa)">
+                                    <span class="menu-list-product">
+                                        <img src="assets/categories/{{repa.image}}.png" alt="">
+                                    </span>
+                                    <h5> {{repa.name}} <span>$ {{repa.price_unit}}</span></h5>
+                                    <p> {{repa.description}}</p>
+                                </a>
                             </div>
                         </div>
                         <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item PIZZA" style="position: absolute; left: 0px; top: 0px; display: none;">
                             <div *ngIf="repa.categorie_id == 1" class="menu-list">
-                                <span class="menu-list-product">
-                                    <img src="assets/categories/{{repa.image}}.png" alt="">
-                                </span>
-                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                <p> {{repa.description}}</p>
+                                <a (click)="gotoRepa(repa)">
+                                    <span class="menu-list-product">
+                                        <img src="assets/categories/{{repa.image}}.png" alt="">
+                                    </span>
+                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                    <p> {{repa.description}}</p>
+                                </a>
                             </div>
                         </div>
                         <div *ngFor="let repa of repas"  class="col-md-6 col-sm-6 col-xs-12 isotope-item TAJINE" style="position: absolute; left: 0px; top: 0px; display: none;">
                             <div *ngIf="repa.categorie_id == 3" class="menu-list">
-                                <span class="menu-list-product">
-                                    <img src="assets/categories/{{repa.image}}.png" alt="">
-                                </span>
-                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                <p> {{repa.description}}</p>
+                                <a (click)="gotoRepa(repa)">
+                                    <span class="menu-list-product">
+                                        <img src="assets/categories/{{repa.image}}.png" alt="">
+                                    </span>
+                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                    <p> {{repa.description}}</p>
+                                </a>
                             </div>
                         </div>
                         <div *ngFor="let repa of repas"  class="col-md-6 col-sm-6 col-xs-12 isotope-item PASTA" style="position: absolute; left: 0px; top: 0px; display: none;">
                             <div *ngIf="repa.categorie_id == 5" class="menu-list">
-                                <span class="menu-list-product">
-                                    <img src="assets/categories/{{repa.image}}.png" alt="">
-                                </span>
-                                <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                <p> {{repa.description}}</p>
+                                <a (click)="gotoRepa(repa)">
+                                    <span class="menu-list-product">
+                                        <img src="assets/categories/{{repa.image}}.png" alt="">
+                                    </span>
+                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
+                                    <p> {{repa.description}}</p>
+                                </a>
                             </div>
                         </div>
                        

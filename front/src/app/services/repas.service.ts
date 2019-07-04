@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 export class RepasService {
 
   url:string = environment.api;
-  repas:any[];
+  repas:any[]=[];
   repasSelected:any;
   categories:any[];
   // observable to listen to like & dislike events
@@ -26,15 +26,21 @@ export class RepasService {
     return this.http.get(this.url+'/repas');
   }
 
+
   getRepa(repas) {
     return this.http.get(this.url+'/repa/'+repas.id).subscribe(
       (response:any)=>{
        this.repasSelected=response;
-       console.log(this.repasSelected);
-     //  this.router.navigate(['/offre-detail']);
+       this.repas.push(this.repasSelected);
+       console.log(this.repas);
+       this.router.navigate(['/repas/'+repas.id]);
       },
       (error)=>{ },
     ); ;
+  }
+
+  getAccompagners() {
+    return this.http.get(this.url+'/accompagners');
   }
 
   getCategories() {

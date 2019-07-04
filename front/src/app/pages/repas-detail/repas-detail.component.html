@@ -5,8 +5,8 @@
             <div class="container">
                 <div class="breadcrumb-inner">
                     <h2>SHOP SINGLE  {{ routeid }}</h2>
-                    <a href="#">Home</a>
-                    <span>Shop</span>
+                    <a  routerLink="/index">Home</a>
+                    <!-- <span>Shop</span> -->
                 </div>
             </div>
         </section>
@@ -60,16 +60,16 @@
                         <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button></div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInDown;">
-                        <h4 class="text-coffee">Caramel Cheesecake</h4>
+                        <h4 class="text-coffee">{{repaSelected.name}}</h4>
                         <div class="star-review-collect">
                             <div class="star-rating">
                                 <span class="star-rating-customer" style="width: 100%">
                                 </span>
                             </div>
-                            <a href="#" class="review-text">03 customer review</a>
+                            <!-- <a href="#" class="review-text">03 customer review</a> -->
                         </div>
-                        <p>If you're planning to start an online store right away, look no further, get this template on templateForest. This product page demonstrates a "Simple Product".</p>
-                        <h3 class="text-coffee">$290.50</h3>
+                        <p>{{repaSelected.description}}</p>
+                        <h3 class="text-coffee">{{repaSelected.price_unit}} DH</h3>
                         <div class="price-textbox">
                             <span class="minus-text"><i class="icon-minus"></i></span>
                             <input type="text" name="txt" placeholder="1" pattern="[0-9]">
@@ -79,14 +79,13 @@
                         <div class="share-tag">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <h5>Les Accompagners :</h5>
                                     <div class="social-wrap">
-                                        <h5>SHARE</h5>
+                                        
                                         <ul class="social">
-                                            <li class="social-facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                            <li class="social-tweeter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            <li class="social-instagram"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                            <li class="social-dribble"><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                            <li class="social-google"><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                                                <br/> <li *ngFor="let accompagner of accompagners" class="social-facebook">
+                                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                            </li><br>
                                         </ul>
                                     </div>
                                 </div>

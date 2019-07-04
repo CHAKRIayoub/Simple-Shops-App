@@ -13,6 +13,7 @@ export class IndexComponent implements OnInit {
   constructor(
     private repasService:RepasService,
     public _d: DomSanitizer) { 
+      
       this.repasService.getRepas().subscribe(
       (response:any)=>{
        this.repas=response;
