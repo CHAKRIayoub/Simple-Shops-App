@@ -35,7 +35,85 @@
 .ant-layout{
     min-height: 100%;
 }
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #e4b95b !important;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container_check .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #d2d8dd;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease
+}
+.container_check:hover input~.checkmark {
+    background-color: #ededed;
+    border: 1px solid transparent
+}
 
+.container_check input:checked~.checkmark {
+    background-color: #e4b95b;
+    border: 1px solid transparent
+}
+
+.container_check .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 10px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+.container_check input:checked~.checkmark:after, .infoBox>img {
+    display: block
+}
+.container_check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer
+}
+#container_check{
+    padding-left: 0px;
+}
+.container_check {
+    display: block;
+    position: relative;
+    padding-top: 5px;
+    font-size: 13px;
+    font-size: 11px;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 10px;
+   
+}
 
 /* .ant-card-body{
     padding: 10px;

@@ -8,14 +8,16 @@ import { RepasService } from 'src/app/services/repas.service';
   styleUrls: ['./repas-detail.component.css']
 })
 export class RepasDetailComponent implements OnInit {
-
+  accompany: any[] = [];
   routeid = 0;
   repaSelected;
   accompagners:any;
-  constructor(  private route: ActivatedRoute, private router: Router,private repasService:RepasService ) { }
+  constructor(  private route: ActivatedRoute, private router: Router,private repasService:RepasService ) {  
+  }
 
   ngOnInit() {
     this.repaSelected=this.repasService.repasSelected;
+    this.repaSelected.qte=1;
     console.log(this.repaSelected);
     this.route.params.subscribe((params) => {
       this.routeid = params['id'];
@@ -29,4 +31,30 @@ export class RepasDetailComponent implements OnInit {
     ); 
   }
 
+  checkAccom(accompagner) {
+    
+    accompagner.show = accompagner.show ? false : true;
+		if (accompagner.show) {
+      accompagner.repas_id=this.repaSelected.id;
+			this.accompany[this.accompany.length] = accompagner;
+		}
+   
+    this.repasService.accompanies=this.accompany;
+    console.log( this.repasService.accompanies);
+	}
+  btnPlus(){
+    var y = +this.repaSelected.qte;
+    this.repaSelected.qte=y +1;
+    console.log(this.repaSelected.qte);
+
+  }
+  btnminus(){
+    if(this.repaSelected.qte > 1){
+      this.repaSelected.qte=this.repaSelected.qte -1;
+    }
+  }
+  addtoCart(){
+    this.repasService.commande.push(this.repaSelected);
+    console.log(this.repasService.commande);
+  }
 }
