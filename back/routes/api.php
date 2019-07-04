@@ -18,6 +18,9 @@ Route::group(['middleware'=>'api'], function($router){
 
 	//repas
 	Route::get('repas','RepasController@Repas');
+	Route::get('repa/{repa_id}','RepasController@Repa');
 	Route::get('categories','RepasController@Categories');
+
+	Route::get('accompagners','RepasController@accompagners');
 
 });
