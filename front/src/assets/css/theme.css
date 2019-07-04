@@ -1030,7 +1030,7 @@ textarea{height:175px;padding:25px 30px;width:100%;border:2px solid #e5e5ee;-web
 .shop-single .filter-btn{margin-left:18px;}
 .minus-text{position:absolute;top:15px;left:15px;cursor:pointer;}
 .plus-text{position:absolute;top:15px;right:15px;cursor:pointer;}
-.comment-review-tab{margin:125px 0 0 0;background:#f4f2ed;}
+.comment-review-tab{margin:125px 0 0 0;background:#ffffff;}
 .tab-part{float:left;width:100%;margin-top:-58px;}
 .tab-inner{display:inline-block;width:100%;}
 .tab-part .tab-content{padding:70px 0 60px;max-width:750px;margin-left:auto;margin-right:auto;}
@@ -1064,7 +1064,7 @@ textarea{height:175px;padding:25px 30px;width:100%;border:2px solid #e5e5ee;-web
 .related-info a{color:#383848;}
 .related-info h6{margin:0 0 10px 0;}
 .related-info a strong{color:#e4b95b;}
-.comment-review-tab .nav-tabs{border-bottom:1px solid #f4f2ed;}
+.comment-review-tab .nav-tabs{border-bottom:1px solid #ffffff;}
 .checkout-wrap{text-align:center;padding:0 0 115px 0;}
 ul.checkout-bar{height:15px;}
 ul.checkout-bar li{color:#333e48;display:block;font-size:16px;font-weight:600;padding:14px 20px 14px 80px;position:relative;font-family:'QuicksandBook-Regular';display:inline-block;margin:50px 0 0;padding:0;text-align:center;width:19%;cursor:pointer;}

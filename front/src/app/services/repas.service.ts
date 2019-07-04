@@ -8,9 +8,10 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class RepasService {
-
+  commande:any[]=[];
   url:string = environment.api;
   repas:any[]=[];
+  accompanies:any[]=[];
   repasSelected:any;
   categories:any[];
   // observable to listen to like & dislike events
@@ -36,7 +37,7 @@ export class RepasService {
        this.router.navigate(['/repas/'+repas.id]);
       },
       (error)=>{ },
-    ); ;
+    );
   }
 
   getAccompagners() {
