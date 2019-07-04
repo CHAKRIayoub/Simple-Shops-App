@@ -14,6 +14,7 @@ import { RepasService } from './services/repas.service'
 import { AuthService } from './auth/services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RepasDetailComponent } from './pages/repas-detail/repas-detail.component';
+import { CheckOutComponent } from './pages/check-out/check-out.component';
 
 
 
@@ -26,7 +27,8 @@ registerLocaleData(en);
     AppComponent, 
     HeaderComponent,
     FooterComponent,
-    RepasDetailComponent
+    RepasDetailComponent,
+    CheckOutComponent
   ],
 
   imports: [
