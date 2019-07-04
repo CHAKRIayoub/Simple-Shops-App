@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class RepasService {
   commande:any[]=[];
+  prix_total=0;
   url:string = environment.api;
   repas:any[]=[];
   accompanies:any[]=[];

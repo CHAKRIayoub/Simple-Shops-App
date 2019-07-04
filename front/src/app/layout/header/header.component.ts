@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NzModalService } from 'ng-zorro-antd';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { RepasService } from 'src/app/services/repas.service';
 @Component({
   selector: 'app-header', 
   templateUrl: './header.component.html',
@@ -13,7 +13,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 
 export class HeaderComponent implements OnInit, OnDestroy {
-
+  prix_total=0;
+  commande;
   logged:boolean;
   userName:string = '';
   subscriptions: Subscription[] = [];
@@ -38,9 +39,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private auth_service:AuthService,
     private token_service:TokenService,
     private router:Router,
-  ) { 
+    private repasService:RepasService
+  ) {
+    this.prix_total=this.repasService.prix_total;
     this.logged = this.token_service.loggedIn();
     if(this.logged) this.userName = JSON.parse(localStorage.getItem('user')).name;
+    this.commande=this.repasService.commande;
   }
   
   ngOnInit() {
@@ -132,6 +136,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
       ));
 
+  }
+  getPrixtotal(){
+    this.prix_total=this.repasService.prix_total;
+    return this.prix_total;
   }
 
 }

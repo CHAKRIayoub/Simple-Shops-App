@@ -39,40 +39,30 @@
 
                             <!-- //panier -->
                             <div class="shop-cart header-collect">
-                                <a href="#"><img src="assets/images/icon-basket.png" alt="">2 Articles - 20.89 DH</a>
+                                <a href="#"><img src="assets/images/icon-basket.png" alt="">{{commande.length}} Articles - {{getPrixtotal()}} DH</a>
                                 <div class="cart-wrap">
                                     <div class="cart-blog">
-                                        <div class="cart-item">
-                                            <div class="cart-item-left">
-                                                <img src="assets/images/img59.png" alt="">
-                                            </div>
-                                            <div class="cart-item-right">
-                                                <h6>Caramel Chesse Cake</h6>
-                                                <span>$ 14.00</span>
-                                            </div>
-                                            <span class="delete-icon"></span>
-                                        </div>
-                                        <div class="cart-item">
+                                        <div *ngFor="let command of commande" class="cart-item">
                                             <div class="cart-item-left">
                                                 <img src="assets/images/img60.png" alt="">
                                             </div>
                                             <div class="cart-item-right">
-                                                <h6>Caramel Chesse Cake</h6>
-                                                <span>$ 14.00</span>
+                                                <h6>{{command.name}} &nbsp; &nbsp; * {{command.qte}}</h6>
+                                                <span> {{command.price_unit * command.qte}} DH</span>
                                             </div>
                                             <span class="delete-icon"></span>
                                         </div>
                                         <div class="subtotal">
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <h6>Subtotal :</h6>
+                                                <h6>Total :</h6>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <span>$ 140.00</span>
+                                                <span> {{getPrixtotal()}} &nbsp; DH</span>
                                             </div>
                                         </div>
                                         <div class="cart-btn">
-                                            <a href="#" class="btn-black view">VIEW ALL</a>
-                                            <a href="#" class="btn-main checkout">CHECK OUT</a>
+                                            <a  routerLink="/checkout"class="btn-black view">VOIR TOUT</a>
+                                            <a href="#" class="btn-main checkout">CHECK-OUT</a>
                                         </div>
                                     </div>
                                 </div>

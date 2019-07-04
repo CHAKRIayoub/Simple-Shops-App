@@ -54,7 +54,9 @@ export class RepasDetailComponent implements OnInit {
     }
   }
   addtoCart(){
+    this.repasService.prix_total+=this.repaSelected.price_unit * this.repaSelected.qte;
     this.repasService.commande.push(this.repaSelected);
+   // this.repasService.commande.prix_total+=this.repaSelected.price_unit;
     console.log(this.repasService.commande);
   }
 }
