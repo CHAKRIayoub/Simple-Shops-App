@@ -9,13 +9,13 @@
     <div class="main-part">
         <!-- Start Slider Part -->
         
-        <!-- End Slider Part -->
+        <!-- End Slider Part --> 
         <!-- Start Welcome Part -->
         
         <!-- End Welcome Part -->
-        <section class="special-menu banner-bg home-icon invert invert-black wow fadeInDown animated" data-background="images/banner1.jpg" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInDown; background-image: url(&quot;images/banner1.jpg&quot;);">
+        <section class="special-menu banner-bg home-icon invert invert-black wow fadeInDown animated"  data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInDown;">
             
-            <div class="container">
+            <div class="container"> 
                 <div class="build-title">
                     <h2>Notre Menu spécial</h2>
                     <h6>
@@ -24,17 +24,17 @@
                 <div class="menu-wrapper menu-return">
                     <div class="portfolioFilter">
                         <div class="portfolioFilter-inner">
-                            <a href="javascript:;"   data-filter="*" class=""><span><img style="height: 44px;" src="assets/categories/all.png" alt=""></span>All</a>
-                            <a href="javascript:;"   data-filter=".TACOS" class=""><span><img style="height: 51px;" src="assets/categories/tacos.png" alt=""></span>TACOS</a>
-                            <a href="javascript:;"   data-filter=".PIZZA" class=""><span><img style="height: 43px;" src="assets/categories/pizza.png" alt=""></span>PIZZA</a>
-                            <a href="javascript:;"  data-filter=".TAJINE" class=""><span><img style="height: 39px;" src="assets/categories/tajine.png" alt=""></span>TAJINE</a>
-                            <a href="javascript:;"   data-filter=".PASTA" class=""><span><img style="height: 39px;" src="assets/categories/pasta.png" alt=""></span>PASTA</a>
-                            <a href="javascript:;" data-filter=".SOUPE" class="current"><span><img style="height: 35px;" src="assets/categories/soupe.png" alt=""></span>SOUPE</a>
+                            <a href="javascript:;" (click)="showedCat='all'"  class="current"><span><img style="height: 44px;" src="assets/categories/all.png" alt=""></span>All</a>
+                            <a href="javascript:;" (click)="showedCat='Tacos'"  ><span><img style="height: 51px;" src="assets/categories/tacos.png" alt=""></span>TACOS</a>
+                            <a href="javascript:;"  (click)="showedCat='Pizza'"  ><span><img style="height: 43px;" src="assets/categories/pizza.png" alt=""></span>PIZZA</a>
+                            <a href="javascript:;" (click)="showedCat='Tajine'" ><span><img style="height: 39px;" src="assets/categories/tajine.png" alt=""></span>TAJINE</a>
+                            <a href="javascript:;"(click)="showedCat='pasta'"  ><span><img style="height: 39px;" src="assets/categories/pasta.png" alt=""></span>PASTA</a>
+                            <a href="javascript:;" (click)="showedCat='soupe'"><span><img style="height: 35px;" src="assets/categories/soupe.png" alt=""></span>SOUPE</a>
                         </div>
-                    </div>
-                    <div class="portfolioContainer row" style="position: relative; height: 151px;">
-                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item TACOS" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div *ngIf="repa.categorie_id == 2" class="menu-list">
+                    </div>  
+                    <div class="portfolioContainer row myhclass">
+                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item {{ repa.categorie_name }}" >
+                            <div  *ngIf="repa.categorie_name == showedCat || showedCat == 'all'" class="menu-list">
                                 <a (click)="gotoRepa(repa)">
                                     <span class="menu-list-product">
                                         <img src="assets/categories/{{repa.image}}.png" alt="">
@@ -46,50 +46,7 @@
 
                             </div>
                         </div>
-                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item SOUPE" style="position: absolute; left: 0px; top: 0px;">
-                            <div *ngIf="repa.categorie_id == 4" class="menu-list">
-                                <a (click)="gotoRepa(repa)">
-                                    <span class="menu-list-product">
-                                        <img src="assets/categories/{{repa.image}}.png" alt="">
-                                    </span>
-                                    <h5> {{repa.name}} <span>$ {{repa.price_unit}}</span></h5>
-                                    <p> {{repa.description}}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div *ngFor="let repa of repas" class="col-md-6 col-sm-6 col-xs-12 isotope-item PIZZA" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div *ngIf="repa.categorie_id == 1" class="menu-list">
-                                <a (click)="gotoRepa(repa)">
-                                    <span class="menu-list-product">
-                                        <img src="assets/categories/{{repa.image}}.png" alt="">
-                                    </span>
-                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                    <p> {{repa.description}}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div *ngFor="let repa of repas"  class="col-md-6 col-sm-6 col-xs-12 isotope-item TAJINE" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div *ngIf="repa.categorie_id == 3" class="menu-list">
-                                <a (click)="gotoRepa(repa)">
-                                    <span class="menu-list-product">
-                                        <img src="assets/categories/{{repa.image}}.png" alt="">
-                                    </span>
-                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                    <p> {{repa.description}}</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div *ngFor="let repa of repas"  class="col-md-6 col-sm-6 col-xs-12 isotope-item PASTA" style="position: absolute; left: 0px; top: 0px; display: none;">
-                            <div *ngIf="repa.categorie_id == 5" class="menu-list">
-                                <a (click)="gotoRepa(repa)">
-                                    <span class="menu-list-product">
-                                        <img src="assets/categories/{{repa.image}}.png" alt="">
-                                    </span>
-                                    <h5> {{repa.name}} <span> {{repa.price_unit}} DH</span></h5>
-                                    <p> {{repa.description}}</p>
-                                </a>
-                            </div>
-                        </div>
+                        
                        
                     </div>
                     <!-- <div class="btn-outer">
