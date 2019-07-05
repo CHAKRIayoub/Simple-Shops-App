@@ -70,7 +70,7 @@
                                     <option *ngFor="let table of tables" [value]="table.id" >{{table.id}}</option>
                                 </select> -->
                                 <nz-select style="width: 120px;"  class="select-dropbox" [(ngModel)]="tableSelected" nzAllowClear nzPlaceHolder="selectionner une table ">
-                                    <nz-option *ngFor="let table of tables" nzValue="table.id" nzLabel="{{table.id}}"></nz-option>
+                                    <nz-option *ngFor="let table of tables" nzValue="{{table.id}}" nzLabel="{{table.id}}"></nz-option>
                                   </nz-select>
                             </div>
                         </div>
