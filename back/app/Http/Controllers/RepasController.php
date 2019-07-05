@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Repa;
 use App\Categorie;
 use App\Accompagner;
+use App\Commande;
+use App\Table;
 
 class RepasController extends Controller
 {
@@ -38,6 +40,25 @@ class RepasController extends Controller
 	public function accompagners(){
 		$accompagners=Accompagner::get();
 		return $accompagners;
+	}
+	public function tables()
+	{
+		$today = date("Y-m-d", time() + 3600);
+		$tablecommande=Commande::
+		select('table_id')
+		->where('created_at','>',$today)
+		->get()->map(function($item, $key) {
+			return $item->table_id;
+		})->all();
+
+		$tables=Table
+		::whereNotIn('id',$tablecommande)
+		->get();
+		return $tables;
+	}
+	public function storeCommande()
+	{
+
 	}
 
 }
