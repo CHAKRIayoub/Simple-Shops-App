@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RepasService } from 'src/app/services/repas.service';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-index',
   templateUrl: './check-out.component.html',
@@ -11,7 +11,7 @@ export class CheckOutComponent implements OnInit {
   prix_total;
   tables:[];
   tableSelected;
-  constructor( private repasService:RepasService ) { 
+  constructor( private repasService:RepasService ,private http: HttpClient,) { 
     this.mesCommande=this.repasService.commande;
     this.prix_total=this.repasService.prix_total;
     console.log(this.mesCommande);
@@ -56,6 +56,14 @@ export class CheckOutComponent implements OnInit {
   checkout(){
     var commandes = JSON.stringify([{ "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":1 }]);
     console.log(commandes);
+    this.http.post("/api/commande_add", commandes).subscribe(
+      (response:any) => {
+
+      },
+      (error) => {
+          // this.toastr.error(this.translate.instant('TOASTER.ERROR.ERROR_BOOKING'));
+          // this.loader.hide();
+      });
   }
 
 
