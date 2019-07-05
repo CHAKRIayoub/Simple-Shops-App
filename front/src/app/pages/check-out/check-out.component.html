@@ -66,9 +66,12 @@
                     <div class="product-cart-detail">
                         <span style="float: left; font-size: xx-large;" > Table </span> <div class="cupon-part">
                             <div class="jq-selectbox jqselect select-dropbox" style="display: inline-block; position: relative; z-index: 100;     min-width: 100px;">
-                                 <select  [(ngModel)]="tableSelected"  class="select-dropbox" >                
+                                 <!-- <select  [(ngModel)]="tableSelected"  class="select-dropbox" >                
                                     <option *ngFor="let table of tables" [value]="table.id" >{{table.id}}</option>
-                                </select>
+                                </select> -->
+                                <nz-select style="width: 120px;"  class="select-dropbox" [(ngModel)]="tableSelected" nzAllowClear nzPlaceHolder="selectionner une table ">
+                                    <nz-option *ngFor="let table of tables" nzValue="table.id" nzLabel="{{table.id}}"></nz-option>
+                                  </nz-select>
                             </div>
                         </div>
                         <a (click)="checkout()" class="btn-medium btn-skin pull-right">CHECKOUT</a>

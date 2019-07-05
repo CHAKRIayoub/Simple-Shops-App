@@ -46,6 +46,10 @@ export class RepasService {
     return this.http.get(this.url+'/accompagners');
   }
 
+  addCommande(data) {
+    return this.http.post(this.url+'/commande_add', data);
+  }
+
   gettables() {
     return this.http.get(this.url+'/tables');
   }
