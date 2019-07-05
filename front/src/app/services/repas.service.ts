@@ -15,6 +15,7 @@ export class RepasService {
   accompanies:any[]=[];
   repasSelected:any;
   categories:any[];
+  tables=[];
   // observable to listen to like & dislike events
   private refreshListSubject = new Subject();
   refreshListObservable = this.refreshListSubject.asObservable();
@@ -43,6 +44,10 @@ export class RepasService {
 
   getAccompagners() {
     return this.http.get(this.url+'/accompagners');
+  }
+
+  gettables() {
+    return this.http.get(this.url+'/tables');
   }
 
   getCategories() {
