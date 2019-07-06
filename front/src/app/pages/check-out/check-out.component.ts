@@ -72,22 +72,19 @@ export class CheckOutComponent implements OnInit {
   }
 
   checkout(){
-
-    if(this.logged){
-      var commandes = JSON.stringify([{ "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":1 }]);
-      console.log(commandes);
-      this.http.post("/api/commande_add", commandes).subscribe(
-        (response:any) => {
-
-        },
-        (error) => {
-            // this.toastr.error(this.translate.instant('TOASTER.ERROR.ERROR_BOOKING'));
-            // this.loader.hide();
-        });
-    }else{
+  if(this.logged){
+    var commandes = { "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":1,"accompanies":this.repasService.accompanies };
+    console.log(commandes);
+    this.repasService.addCommande(commandes).subscribe(
+      (response:any) => {
+        console.log(response)
+      },
+      (error) => {console.log('erreur');
+        
+      });
+      }else{
       this.auth_service.openModal();
     }
-    
   }
 
 

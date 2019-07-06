@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Repa;
 use App\Categorie;
 use App\Accompagner;
 use App\Commande;
 use App\Table;
+use App\LigneCommande;
+use App\CommandeAccom;
 
 class RepasController extends Controller
 {
@@ -56,9 +59,36 @@ class RepasController extends Controller
 		->get();
 		return $tables;
 	}
-	public function storeCommande()
+	public function storeCommande(Request $request)
 	{
+		$commande=new Commande();
+		$commande->price_ttc=$request->prix_ttc;
+		$commande->table_id=$request->table_id;
+		$commande->state_id=1;
+		$commande->client_id=$request->client_id;
+		$commande->date_start= date("Y-m-d H:i:s",time() + 3600);
+		$commande->save();
 
+		foreach ($request->repas as $key => $value) {
+			
+			$ligne_commande=new LigneCommande();
+			$ligne_commande->commande_id=$commande->id;
+			$ligne_commande->repa_id=$value['id'];
+			$ligne_commande->qte=$value['qte'];
+			$ligne_commande->save();
+
+		}
+
+		foreach ($request->accompanies as $key => $value) {
+			$ligne_commande_accompanies_repas=new CommandeAccom();
+			$ligne_commande_accompanies_repas->id_commande=$commande->id;
+			$ligne_commande_accompanies_repas->id_repas=$value['repas_id'];
+			$ligne_commande_accompanies_repas->id_acc=$value['id'];
+			$ligne_commande_accompanies_repas->save();
+		}
+		
+		return $request;
+		
 	}
 
 }
