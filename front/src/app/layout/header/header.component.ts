@@ -84,7 +84,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (data:any) => {
         this.token_service.setToken(data);
         this.auth_service.changeAuthStatus(true)
-        this.router.navigateByUrl('/index'); 
         this.loading = false;
         this.isLoginVisible = false;
         this.isRegisterVisible = false;
@@ -137,7 +136,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.token_service.setToken(data);
           this.auth_service.changeAuthStatus(true)
-          this.router.navigateByUrl('/index'); 
           this.isLoginVisible = false;
           this.isRegisterVisible = false;
         },
