@@ -67,12 +67,21 @@ class RepasController extends Controller
 		$commande->table_id=$request->table_id;
 		$commande->state_id=1;
 		$commande->dure=30;
+		if($request->emporter){
+			$commande->emporter='Emporter';
+		}else{
+			$commande->emporter='Sur place';
+		}
+		
 		$commande->client_id=$request->client_id;
 		$commande->date_start= date("Y-m-d H:i:s",time() + 3600);
 		$commande->save();
 
+		$dureMax=0;
 		foreach ($request->repas as $key => $value) {
-			
+			if($value['dure']>$dureMax){
+				$dureMax=$value['dure'];
+			}
 			$ligne_commande=new LigneCommande();
 			$ligne_commande->commande_id=$commande->id;
 			$ligne_commande->repa_id=$value['id'];
@@ -88,7 +97,8 @@ class RepasController extends Controller
 			$ligne_commande_accompanies_repas->id_acc=$value['id'];
 			$ligne_commande_accompanies_repas->save();
 		}
-		
+		$commande->dure=$dureMax;
+		$commande->save();
 		return $request;
 		
 	}
