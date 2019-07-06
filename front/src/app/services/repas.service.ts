@@ -29,6 +29,10 @@ export class RepasService {
     return this.http.get(this.url+'/repas');
   }
 
+  gotoresult(){
+    this.router.navigate(['/result']);
+  }
+
 
   getRepa(repas) {
     return this.http.get(this.url+'/repa/'+repas.id).subscribe(
