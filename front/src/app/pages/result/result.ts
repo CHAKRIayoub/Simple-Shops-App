@@ -5,10 +5,10 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { TokenService } from 'src/app/auth/services/token.service';
 @Component({
   selector: 'app-index',
-  templateUrl: './check-out.component.html',
-  styleUrls: ['./check-out.component.css']
+  templateUrl: './result.html',
+  styleUrls: ['./result.css']
 })
-export class CheckOutComponent implements OnInit {
+export class ResultComponent implements OnInit {
   mesCommande:any[]=[];
   prix_total;
   tables:[];
@@ -72,19 +72,22 @@ export class CheckOutComponent implements OnInit {
   }
 
   checkout(){
-  if(this.logged){
-    var commandes = { "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":1,"accompanies":this.repasService.accompanies };
-    console.log(commandes);
-    this.repasService.addCommande(commandes).subscribe(
-      (response:any) => {
-        console.log(response)
-      },
-      (error) => {console.log('erreur');
-        
-      });
-      }else{
-      this.auth_service.openModal();
+
+    if(this.logged){
+      var commandes = JSON.stringify([{ "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":1 }]);
+      console.log(commandes);
+      this.http.post("/api/commande_add", commandes).subscribe(
+        (response:any) => {
+          this.repasService.gotoresult();
+        },
+        (error) => {
+            // this.toastr.error(this.translate.instant('TOASTER.ERROR.ERROR_BOOKING'));
+            // this.loader.hide();
+        });
+    }else{
+      this.auth_service.openModal();  
     }
+    
   }
 
 

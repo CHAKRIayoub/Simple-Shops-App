@@ -24,5 +24,6 @@ Route::group(['middleware'=>'api'], function($router){
 	Route::get('accompagners','RepasController@accompagners');
 	Route::get('tables','RepasController@tables');
 	Route::post('commande_add', 'RepasController@storeCommande');
+	Route::post('myCommandes', 'RepasController@myCommandes');
 
 });

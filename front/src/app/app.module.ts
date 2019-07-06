@@ -18,6 +18,7 @@ import { CheckOutComponent } from './pages/check-out/check-out.component';
 
 import { myshopsComponent } from './pages/myshops/myshops.component';
 
+import { ResultComponent } from './pages/result/result'
 
 
 
@@ -31,7 +32,8 @@ registerLocaleData(en);
     FooterComponent,
     RepasDetailComponent,
     CheckOutComponent,
-    myshopsComponent
+    myshopsComponent,
+    ResultComponent 
   ],
 
   imports: [

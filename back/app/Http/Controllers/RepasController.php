@@ -61,6 +61,7 @@ class RepasController extends Controller
 	}
 	public function storeCommande(Request $request)
 	{
+		
 		$commande=new Commande();
 		$commande->price_ttc=$request->prix_ttc;
 		$commande->table_id=$request->table_id;
@@ -89,6 +90,11 @@ class RepasController extends Controller
 		
 		return $request;
 		
+	}
+	public function myCommandes(Request $request)
+	{
+		$commande=Commande::where('client_id',1)->orderBy('created_at', 'desc')->get();
+		return $commande;
 	}
 
 }

@@ -45,6 +45,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.logged = this.token_service.loggedIn();
     if(this.logged) this.userName = JSON.parse(localStorage.getItem('user')).name;
     this.commande=this.repasService.commande;
+
+
+    this.auth_service.openModalObservable.subscribe(()=>{
+      this.showModal();
+    });
+
   }
   
   ngOnInit() {
@@ -89,6 +95,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     ))
 
+  }
+
+  handleCancel(){
+    
+    this.isLoginVisible = false; 
+    this.isRegisterVisible = false;
   }
 
 

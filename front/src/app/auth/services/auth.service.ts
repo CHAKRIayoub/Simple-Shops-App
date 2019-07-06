@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { TokenService } from '../services/token.service';
 
 @Injectable({
@@ -12,6 +12,9 @@ export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(this.token_service.loggedIn() );
   authStatut = this.loggedIn.asObservable();
+
+  private openModalSubject = new Subject( );
+  openModalObservable = this.openModalSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -42,6 +45,12 @@ export class AuthService {
   
     this.loggedIn.next(value);
   
+  }
+
+  openModal(){
+  
+    this.openModalSubject.next();
+   
   }
 
 }

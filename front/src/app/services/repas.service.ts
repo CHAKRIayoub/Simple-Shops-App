@@ -29,6 +29,10 @@ export class RepasService {
     return this.http.get(this.url+'/repas');
   }
 
+  gotoresult(){
+    this.router.navigate(['/result']);
+  }
+
 
   getRepa(repas) {
     return this.http.get(this.url+'/repa/'+repas.id).subscribe(
@@ -52,6 +56,10 @@ export class RepasService {
 
   gettables() {
     return this.http.get(this.url+'/tables');
+  }
+
+  getmyCommandes(data) {
+    return this.http.post(this.url+'/myCommandes',data);
   }
 
   getCategories() {
