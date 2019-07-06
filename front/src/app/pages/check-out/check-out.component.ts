@@ -31,7 +31,10 @@ export class CheckOutComponent implements OnInit {
     );
 
     this.logged = this.token_service.loggedIn();
-    this.userID = JSON.parse(localStorage.getItem('user')).id;
+    if(this.logged){
+      this.userID = JSON.parse(localStorage.getItem('user')).id;
+    }
+    
      // listen for login or logout events
      this.auth_service.authStatut.subscribe(
       (data)=>{ 
