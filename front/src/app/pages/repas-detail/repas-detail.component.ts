@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepasService } from 'src/app/services/repas.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-index',
@@ -12,7 +13,7 @@ export class RepasDetailComponent implements OnInit {
   routeid = 0;
   repaSelected;
   accompagners:any;
-  constructor(  private route: ActivatedRoute, private router: Router,private repasService:RepasService ) {  
+  constructor(  private route: ActivatedRoute, private router: Router,private repasService:RepasService,private notification: NzNotificationService ) {  
   }
 
   ngOnInit() {
@@ -57,5 +58,10 @@ export class RepasDetailComponent implements OnInit {
     this.repasService.prix_total+=this.repaSelected.price_unit * this.repaSelected.qte;
     this.repasService.commande.push(this.repaSelected);
     console.log(this.repasService.commande);
+    this.notification.create(
+      'success',
+      'Notification',
+      'Votre choix est ajouté au panier avec succes.'
+    );
   }
 }
