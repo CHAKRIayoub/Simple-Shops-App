@@ -66,6 +66,7 @@ class RepasController extends Controller
 		$commande->price_ttc=$request->prix_ttc;
 		$commande->table_id=$request->table_id;
 		$commande->state_id=1;
+		$commande->dure=30;
 		$commande->client_id=$request->client_id;
 		$commande->date_start= date("Y-m-d H:i:s",time() + 3600);
 		$commande->save();
@@ -93,7 +94,8 @@ class RepasController extends Controller
 	}
 	public function myCommandes(Request $request)
 	{
-		$commande=Commande::where('client_id',1)->orderBy('created_at', 'desc')->get();
+		
+		$commande=Commande::where('client_id',$request->client_id)->orderBy('created_at', 'desc')->get();
 		return $commande;
 	}
 
