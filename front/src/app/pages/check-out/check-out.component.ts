@@ -3,6 +3,7 @@ import { RepasService } from 'src/app/services/repas.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { TokenService } from 'src/app/auth/services/token.service';
+import { Router } from '../../../../node_modules/@angular/router';
 @Component({
   selector: 'app-index',
   templateUrl: './check-out.component.html',
@@ -12,9 +13,10 @@ export class CheckOutComponent implements OnInit {
   mesCommande:any[]=[];
   prix_total;
   tables:[];
+  userID;
   tableSelected;
   logged:boolean;
-  constructor( private repasService:RepasService ,private http: HttpClient, private auth_service:AuthService, private token_service:TokenService,
+  constructor( private repasService:RepasService ,private http: HttpClient, private auth_service:AuthService, private token_service:TokenService,private router: Router
     
     ) { 
     this.mesCommande=this.repasService.commande;
@@ -29,7 +31,7 @@ export class CheckOutComponent implements OnInit {
     );
 
     this.logged = this.token_service.loggedIn();
-
+    this.userID = JSON.parse(localStorage.getItem('user')).id;
      // listen for login or logout events
      this.auth_service.authStatut.subscribe(
       (data)=>{ 
@@ -71,10 +73,12 @@ export class CheckOutComponent implements OnInit {
     return this.prix_total;
   }
 
+
   sendCheckout(){
-    var commandes = { "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":1,"accompanies":this.repasService.accompanies };
+    var commandes = { "repas": this.mesCommande, "prix_ttc": this.prix_total, "table_id": this.tableSelected,"client_id":this.userID,"accompanies":this.repasService.accompanies };
     this.repasService.addCommande(commandes).subscribe(
       (response:any) => {
+      	this.router.navigate(['/result']);
       },
       (error) => {console.log('erreur');
         

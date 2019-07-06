@@ -59,7 +59,7 @@ export class RepasService {
   }
 
   getmyCommandes(data) {
-    return this.http.post(this.url+'/myCommandes',data);
+    return this.http.post(this.url+'/myCommandes',{client_id:data});
   }
 
   getCategories() {

@@ -24,6 +24,7 @@
                                 <th>COMMANDE</th>
                                 <th>TABLE</th>
                                 <th>ETAT</th>
+                                <th>PRET à</th>
                                 <th>TOTAL</th>
                             </tr>
                         </thead>
@@ -56,11 +57,17 @@
                                      
                                     </div>
                                 </td>
+                                <th>PRET à</th>
+                                    <td *ngIf="mycommande.state_id == 1 || mycommande.state_id == 3">
+                                        {{mycommande.dure }} min 
+                                    </td>
+                                    <td *ngIf="mycommande.state_id == 2 || mycommande.state_id == 5 || mycommande.state_id == 4">
+                                           --
+                                    </td>
                                 <th>TOTAL</th>
                                 <td>
                                     {{mycommande.price_ttc }} &nbsp;&nbsp; DH 
                                 </td>
-                                <td class="shop-cart-close"><i class="icon-cancel-5"></i></td>
                             </tr>
                            
                         </tbody>
