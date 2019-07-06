@@ -4,6 +4,7 @@ import { IsLoggedService } from './auth/services/is-logged.service'
 import { IsNotLoggedService } from './auth/services/is-not-logged.service'
 import { RepasDetailComponent } from './pages/repas-detail/repas-detail.component';
 import { CheckOutComponent } from './pages/check-out/check-out.component';
+import { myshopsComponent } from './pages/myshops/myshops.component';
 
 
 
@@ -25,6 +26,12 @@ const routes: Routes = [
     {
       path: 'checkout',
       component: CheckOutComponent
+      // canActivate: [IsLoggedService]
+
+    },
+    {
+      path: 'myshops',
+      component: myshopsComponent
       // canActivate: [IsLoggedService]
 
     },

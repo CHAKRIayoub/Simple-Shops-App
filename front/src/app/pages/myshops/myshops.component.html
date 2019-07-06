@@ -1,0 +1,84 @@
+<main>
+    <div class="main-part">
+        <!-- Start Breadcrumb Part -->
+        <section class="breadcrumb-part" data-stellar-offset-parent="true" data-stellar-background-ratio="0.5" style="background-image: url(&quot;assets/images/breadbg1.jpg&quot;); background-position: 0% 208.4px;">
+            <div class="container">
+                <div class="breadcrumb-inner">
+                    <h2>PANIER</h2>
+                    <a  routerLink="/index">Home</a>
+                    <span>Mes shops</span>
+                </div>
+            </div>
+        </section>
+        <!-- End Breadcrumb Part -->
+        <section class="home-icon shop-cart bg-skeen">
+            <div class="icon-default icon-skeen">
+                <img src="assets/images/scroll-arrow.png" alt="">
+            </div>
+            <div class="container">
+                
+                <div class="shop-cart-list wow fadeInDown animated" data-wow-duration="1000ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms; animation-name: fadeInDown;">
+                    <table class="shop-cart-table">
+                        <thead>
+                            <tr>
+                                <th>REPAS</th>
+                                <th>PRIX</th>
+                                <th>QUANTITY</th>
+                                <th>TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let Commande of mesCommande">
+                                <th>REPAS</th>
+                                <td>
+                                    <div class="product-cart">
+                                        <img src="assets/images/img70.png" alt="">
+                                    </div>
+                                    <div class="product-cart-title">
+                                        <span>{{Commande.name}}</span>
+                                    </div>
+                                </td>
+                                <th>PRIX</th>
+                                <td>
+                                    <strong>{{Commande.price_unit}} &nbsp; &nbsp;DH</strong>
+                                    <!-- <del>$5400.00</del> -->
+                                </td>
+                                <th>QUANTITY</th>
+                                <td>
+                                    <div class="price-textbox">
+                                        <span (click)="btnminus(Commande)" class="minus-text"><i class="icon-minus"></i></span>
+                                        <input name="txt" [(ngModel)]="Commande.qte"  type="text">
+                                        <span (click)="btnPlus(Commande)" class="plus-text"><i class="icon-plus"></i></span>
+                                    </div>
+                                </td>
+                                <th>TOTAL</th>
+                                <td>
+                                    {{Commande.price_unit * Commande.qte}} &nbsp;&nbsp; DH 
+                                </td>
+                                <td class="shop-cart-close"><i class="icon-cancel-5"></i></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                    <div class="grand-total">
+                        <h5 style="font-size: xx-large" >TOTAL <span>{{calculerPrixttc()}}&nbsp; DH</span></h5>
+                    </div>
+                    <div class="product-cart-detail">
+                        <span style="float: left; font-size: xx-large;" > Table :</span> <div class="cupon-part">
+                            <div class="jq-selectbox jqselect select-dropbox" style="display: inline-block; position: relative; z-index: 100;     min-width: 100px;">
+                                 <!-- <select  [(ngModel)]="tableSelected"  class="select-dropbox" >                
+                                    <option *ngFor="let table of tables" [value]="table.id" >{{table.id}}</option>
+                                </select> -->
+                                <nz-select style="width: 120px; margin-top: 10px; margin-left: 44px;"  class="select-dropbox" [(ngModel)]="tableSelected" nzAllowClear nzPlaceHolder="selectionner une table ">
+                                    <nz-option *ngFor="let table of tables" nzValue="{{table.id}}" nzLabel="{{table.id}}"></nz-option>
+                                  </nz-select>
+                            </div>
+                        </div>
+                        <a (click)="checkout()" class="btn-medium btn-skin pull-right">CHECKOUT</a>
+                   
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+</main>
