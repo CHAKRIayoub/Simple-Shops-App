@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RepasService } from 'src/app/services/repas.service';
 import { environment } from "./../../../environments/environment";
+import { NzNotificationService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-index',
@@ -15,8 +16,12 @@ export class IndexComponent implements OnInit {
     categories:any[];
     showedCat='all';
 
-    constructor(private repasService:RepasService) { 
-        
+    constructor(private repasService:RepasService,private notification: NzNotificationService) { 
+        this.notification.create(
+            'info',
+            'Notification',
+            'Bienvenu a votre restaurant'
+          );
         this.repasService.getCategories().subscribe((response:any)=>{
             this.categories = response;
             console.log(this.categories);

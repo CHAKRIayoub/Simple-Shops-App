@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { NzModalService } from 'ng-zorro-antd';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RepasService } from 'src/app/services/repas.service';
+import { NzNotificationService } from 'ng-zorro-antd';
 @Component({
   selector: 'app-header', 
   templateUrl: './header.component.html',
@@ -39,7 +40,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private auth_service:AuthService,
     private token_service:TokenService,
     private router:Router,
-    private repasService:RepasService
+    private repasService:RepasService,
+    private notification: NzNotificationService,
   ) {
     this.prix_total=this.repasService.prix_total;
     this.logged = this.token_service.loggedIn();
@@ -87,6 +89,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.isLoginVisible = false;
         this.isRegisterVisible = false;
+        this.notification.create(
+          'success',
+          'Notification',
+          'Connexion a été effectuée avec succes, confirmer votre commande !! '
+        );
       },
       (error)=>{
         this.loginFail = true;
