@@ -17,12 +17,16 @@
             </div>
             <div class="container">
                 
-                <div class="order-complete-box">
+                <div id="contentToConvert" class="order-complete-box">
                     <img src="assets/images/complete-sign.png" alt="">
                     <p>Merci d'avoir choisi notre restaurant. Votre repas sera preparé dans quelques instants, Veuillez patientez,.
                        .</p>
-                    <a  routerLink="/myshops" class="btn-medium btn-primary-gold btn-large">Mes Commandes</a> &nbsp;  <a  routerLink="/myshops" class="btn-medium btn-primary-gold btn-large"> <i nz-icon nzType="printer" nzTheme="outline"></i> Facture</a>
+                    <a  routerLink="/myshops" class="btn-medium btn-primary-gold btn-large">Mes Commandes</a> &nbsp;  
+                    <a (click)="printFacture()" class="btn-medium btn-primary-gold btn-large"> <i nz-icon nzType="printer" nzTheme="outline"></i> Facture</a>
                 </div>
+
+              
+
             </div>
         </section>
     </div>

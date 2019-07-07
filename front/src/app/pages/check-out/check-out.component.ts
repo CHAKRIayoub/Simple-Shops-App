@@ -20,10 +20,13 @@ export class CheckOutComponent implements OnInit {
   switchValue = false;
   constructor(private notification: NzNotificationService, private repasService:RepasService ,private http: HttpClient, private auth_service:AuthService, private token_service:TokenService,private router: Router
     
-    ) { 
+    ) {
+
     this.mesCommande=this.repasService.commande;
     this.prix_total=this.repasService.prix_total;
+    
     console.log(this.mesCommande);
+    
     this.repasService.gettables().subscribe(
       (response:any)=>{
        this.tables=response;
@@ -91,7 +94,10 @@ export class CheckOutComponent implements OnInit {
           'Notification',
           'Votre Commande  est bien crée '
         );
-        this.repasService.commande=[];
+        this.repasService.commande.forEach((item)=>{
+          this.repasService.lastCommande.push(item)
+        })
+        this.repasService.commande = [];
       },
       (error) => {console.log('erreur');
         

@@ -16,6 +16,7 @@ export class RepasService {
   repasSelected:any;
   categories:any[];
   tables=[];
+  lastCommande=[];
   // observable to listen to like & dislike events
   private refreshListSubject = new Subject();
   refreshListObservable = this.refreshListSubject.asObservable();
