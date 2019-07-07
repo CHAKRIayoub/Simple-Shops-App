@@ -55,7 +55,7 @@
                                 <td>
                                     {{Commande.price_unit * Commande.qte}} &nbsp;&nbsp; DH 
                                 </td>
-                                <td class="shop-cart-close"><i class="icon-cancel-5"></i></td>
+                                <td (click)="deleteRepas(Commande)" class="shop-cart-close"><i class="icon-cancel-5"></i></td>
                             </tr>
                            
                         </tbody>

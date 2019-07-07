@@ -39,10 +39,10 @@
 
                             <!-- //panier -->
                             <div class="shop-cart header-collect">
-                                <a  style="color: #fff" ><img src="assets/images/icon-basket.png" alt="">{{commande.length}} Articles - {{getPrixtotal()}} DH</a>
+                                <a  style="color: #fff" ><img src="assets/images/icon-basket.png" alt="">{{this.repasService.commande.length}} Articles - {{this.repasService.prix_total}} DH</a>
                                 <div class="cart-wrap">
                                     <div class="cart-blog">
-                                        <div *ngFor="let command of commande" class="cart-item">
+                                        <div *ngFor="let command of this.repasService.commande" class="cart-item">
                                             <div class="cart-item-left">
                                                 <img src="assets/images/img60.png" alt="">
                                             </div>
@@ -50,14 +50,13 @@
                                                 <h6>{{command.name}} &nbsp; &nbsp; * {{command.qte}}</h6>
                                                 <span> {{command.price_unit * command.qte}} DH</span>
                                             </div>
-                                            <span class="delete-icon" ></span>
                                         </div>
                                         <div class="subtotal">
                                             <div class="col-md-6 col-sm-6 col-xs-6">
                                                 <h6>Total :</h6>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                                <span> {{getPrixtotal()}} &nbsp; DH</span>
+                                                <span> {{this.repasService.prix_total}} &nbsp; DH</span>
                                             </div>
                                         </div>
                                         <div class="cart-btn">  

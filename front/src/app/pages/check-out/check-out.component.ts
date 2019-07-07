@@ -117,4 +117,23 @@ export class CheckOutComponent implements OnInit {
   }
 
 
+  deleteRepas(Commande){
+
+    this.mesCommande = this.mesCommande.filter((item)=>{
+      return item != Commande;
+    });
+
+    this.mesCommande.splice(this.mesCommande.indexOf(Commande),1 );
+
+
+    this.repasService.commande = this.mesCommande.filter((item)=>{
+      return item != Commande;
+    });
+
+    this.repasService.commande.splice(this.mesCommande.indexOf(Commande),1 );
+
+    
+  }
+
+
 }
