@@ -1,6 +1,4 @@
-# full stack coding challenge
-
-### Completed Features
+# Features
 
 1.   As a User, I can sign up using my email & password
 
@@ -12,15 +10,11 @@
 
 1. Acceptance criteria: liked shops shouldn’t be displayed on the main page
 
+1. As a User, I can dislike a shop, so it won’t be displayed within “Nearby Shops”
 
-#####  Bonus  Features
+1. As a User, I can display the list of preferred shops
 
- 1. As a User, I can dislike a shop, so it won’t be displayed within “Nearby Shops”
- without ( it won’t be displayed within“Nearby Shops” list **during the next 2 hours ** ) => lack of time
-
- 1. As a User, I can display the list of preferred shops
-
- 1. As a User, I can remove a shop from my preferred shops list
+1. As a User, I can remove a shop from my preferred shops list
 
 ------------
 
