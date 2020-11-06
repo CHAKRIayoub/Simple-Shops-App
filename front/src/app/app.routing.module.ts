@@ -9,20 +9,20 @@ const routes: Routes = [
     
     {
       path: 'auth',
-      loadChildren: './auth/auth.module#AuthModule',
+      loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
       canActivate: [IsNotLoggedService]
     }, 
 
     {
       path: 'shops',
-      loadChildren: './pages/shops/shops.module#ShopsModule',
+      loadChildren: () => import('./pages/shops/shops.module').then(m => m.ShopsModule),
       canActivate: [IsLoggedService]
 
     },
 
     {
       path: 'index',
-      loadChildren: './pages/index/index.module#IndexModule',
+      loadChildren: () => import('./pages/index/index.module').then(m => m.IndexModule),
       canActivate: [IsLoggedService]
     },
     { path: '**', redirectTo: '/index' }
